@@ -1,0 +1,27 @@
+{
+  "matches": 276,
+  "callback_errors": 0,
+  "tests_passed": 57,
+  "profiles": {
+    "agentpitch-validated": "20fb44b0a4e059c3",
+    "agentpitch-experimental-2-1-1": "6fb9b2ff5963e591",
+    "aws-candidate": "6a1fe5d9d4fda08c"
+  },
+  "candidate_code_matches_evaluated_source": true,
+  "five_runtime_sources_and_settings_verified": true,
+  "archives_crc_verified": true,
+  "policy_modified_after_final_matches": false,
+  "recommended_formation": "original",
+  "win_rate_improvement_proven": false,
+  "recommended_replay": {
+    "file": "replay-recommended-first.html",
+    "match_id": "formation_final_f_original_vs_baseline_s501_team_a",
+    "score": [
+      1,
+      0
+    ],
+    "result": "W",
+    "events_sha256": "9bf7ad7ac7379c933511f445859bc3a5e78204751cc3f8b2d64c3a7f5001259a"
+  },
+  "source_zip_sha256": "e2b20365af1449a273a94e0eaa258727f08f405fe9af994e2ee3066a8dc960db"
+}

@@ -1,0 +1,53 @@
+{
+  "baseline": {
+    "f_original": {
+      "passes": 620,
+      "forward_passes": 238,
+      "back_passes": 213,
+      "possession_ticks": 9557,
+      "own_third_ticks": 1634,
+      "final_third_ticks": 908,
+      "shots": 71,
+      "shots_slot_3": 25,
+      "shots_slot_4": 31,
+      "shots_slot_2": 15
+    },
+    "f_2-1-1": {
+      "passes": 761,
+      "forward_passes": 315,
+      "back_passes": 373,
+      "possession_ticks": 10840,
+      "own_third_ticks": 3229,
+      "final_third_ticks": 175,
+      "shots": 17,
+      "shots_slot_3": 4,
+      "shots_slot_4": 13
+    }
+  },
+  "reference3": {
+    "f_original": {
+      "passes": 443,
+      "forward_passes": 149,
+      "back_passes": 181,
+      "possession_ticks": 7589,
+      "own_third_ticks": 688,
+      "final_third_ticks": 851,
+      "shots": 58,
+      "shots_slot_4": 30,
+      "shots_slot_2": 14,
+      "shots_slot_3": 14
+    },
+    "f_2-1-1": {
+      "passes": 398,
+      "forward_passes": 220,
+      "back_passes": 151,
+      "possession_ticks": 7357,
+      "own_third_ticks": 1308,
+      "final_third_ticks": 673,
+      "shots": 66,
+      "shots_slot_4": 55,
+      "shots_slot_3": 10,
+      "shots_slot_2": 1
+    }
+  }
+}

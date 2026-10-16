@@ -1,0 +1,112 @@
+{
+  "snapshot_date": "2026-10-17",
+  "event_date": "2026-10-17",
+  "implementation": "Original V3 five-player tactical policy; goal-oriented heuristic, role transitions and observation memory. No new PPO/LSTM weights; live AWS/LLM match performance not measured.",
+  "sources": [
+    {
+      "name": "AWS official workshop executable sample and deployment template",
+      "url": "https://github.com/aws-samples/sample-ai-possibilities/tree/15279eb89b7113b145f3a1394ddaec5d39c04ac4/agentic-football-sample-agents",
+      "commit": "15279eb89b7113b145f3a1394ddaec5d39c04ac4",
+      "license": "MIT-0",
+      "use": "Payload/command and deployment contracts; unchanged CDK template vendored with license"
+    },
+    {
+      "name": "AWS official coach mechanics reference",
+      "url": "https://github.com/aws-samples/sample-ai-possibilities/blob/15279eb89b7113b145f3a1394ddaec5d39c04ac4/agentic-football-coach/kiro-football-coach/content-reference/en/game-mechanics.md",
+      "use": "Documentation comparison; timing/stance/pass-enum discrepancies explicitly retained as unresolved event-version questions"
+    },
+    {
+      "name": "Vienna Stars",
+      "url": "https://github.com/philippru/vienna-stars-agentic-football/tree/c56b6c2f6dc6649776a18de68c472bb2c97daee8",
+      "commit": "c56b6c2f6dc6649776a18de68c472bb2c97daee8",
+      "license": "MIT-0",
+      "outcome": "Author reports 1 win, 3 losses",
+      "use": "Failure lessons: swarming, output guards, shot geometry, deadlines, growing history; original code replaces unsafe shared-history threading"
+    },
+    {
+      "name": "China UG pretest",
+      "url": "https://builder.aws.com/content/3GcnOcmzvuI4UOZ8mnKzSz913Nr/72-hours-of-agentic-football-from-aws-agentcore-harness-to-a-full-observability-toolchain",
+      "code_url": "https://github.com/peterpanstechland/sample-ai-possibilities/tree/football-workshop/agentic-football-sample-agents",
+      "use": "Hybrid pipeline and evaluation/observability lessons; not used as a verified winning policy"
+    },
+    {
+      "name": "Mayinchen opening-round Alpha leader report",
+      "url": "https://builder.aws.com/content/3JJgFfqDX0yyBekhcvBdS0Bp39o/how-ai-wins-a-football-match-five-agents-that-never-talk-two-minutes-and-a-failure-report",
+      "outcome": "Reported opening-round 9 wins / 1 loss, not overall champion",
+      "use": "Identity, role separation, mirroring, raw-payload validation and version discipline"
+    },
+    {
+      "name": "Ember Badgers APJ runner-up",
+      "url": "https://builder.aws.com/content/3JUx4JHEYo7QfnGTcrfA4LqlF6w/building-ember-badgers-my-journey-to-2nd-place-in-the-aws-ai-league-apj-regional-final",
+      "use": "Role specialization and coordinated progression; no complete public winning implementation verified"
+    },
+    {
+      "name": "MarkRoss EMEA finalist",
+      "url": "https://blog.awsaicommunity.org/posts/agentic-football-2026-emea-virtual-our-run-to-the-final/",
+      "use": "Per-position runtime architecture and formation checks; competitive details withheld by author"
+    },
+    {
+      "name": "Snow Halation FC APJ results",
+      "url": "https://github.com/aws-ai-community/ai-league-competition-data/blob/main/competitions/2026/agentic-football/Virtual-APJ/README.md",
+      "use": "Results evidence only; does not contain team's implementation"
+    },
+    {
+      "name": "Strands official architecture article",
+      "url": "https://strandsagents.com/blog/inside-agentic-football-cup/",
+      "use": "Model-first five-player architecture; different published timing from coach reference"
+    },
+    {
+      "name": "Baku event announcement",
+      "url": "https://www.meetup.com/aws-baku/events/316811025/",
+      "use": "Event context; no verified technical integration contract"
+    },
+    {
+      "name": "WeKick author writeup",
+      "url": "https://www.kaggle.com/c/google-football/discussion/202232",
+      "use": "Opponent-pool evaluation and goal-aligned objectives; full text supplied by user; no weights or league framework imported"
+    },
+    {
+      "name": "SaltyFish author writeup",
+      "url": "https://www.kaggle.com/competitions/google-football/writeups/saltyfish-saltyfish-current-2nd-place-solution",
+      "use": "Distinguish proxy metrics from winning; environment-specific masks; full text supplied by user"
+    },
+    {
+      "name": "AgentPitch pinned evaluation engine",
+      "url": "https://github.com/gangtao/AgentPitch/tree/ce2ab34a64e28315bd0fb5c41864cd5303b7439e",
+      "license": "Apache-2.0",
+      "use": "Unmodified physics and native opponent; local completed matches"
+    },
+    {
+      "name": "AWS competition full tree, three regional football brackets",
+      "url": "https://github.com/aws-ai-community/ai-league-competition-data",
+      "commit": "26c81fab687f747b802ab676a336ea6f125e9995",
+      "use": "Results and bracket files only; no replay or champion code files present"
+    },
+    {
+      "name": "Blitz Cougars winner Jon Robins",
+      "url": "https://www.linkedin.com/posts/jonathonrobins_i-never-thought-id-be-able-to-say-im-going-activity-7511041394447142912-ICrU",
+      "use": "First-person winner identification and result; no full tactics code"
+    },
+    {
+      "name": "Divided United author",
+      "url": "https://www.lukecampbell.net/i-built-an-ai-football-team-that-doesnt-want-the-ball/",
+      "use": "1-1-2 focal receiver and space runner; compared with EMEA bracket loss"
+    },
+    {
+      "name": "Manchester participant Benjamin Pearson",
+      "url": "https://www.linkedin.com/posts/benjaminpearson9_this-week-at-the-amazon-web-services-aws-activity-7499017685071196160-rOea",
+      "use": "Payload field alignment, few passes despite high possession"
+    },
+    {
+      "name": "Sky High Designs participant failure report",
+      "url": "https://www.skyhighdesigns.com/en/blog/2026/ai-football-agents-week-one",
+      "use": "Latency, reachable support, complete decision coverage"
+    },
+    {
+      "name": "Sneha published agents",
+      "url": "https://github.com/snehasrikanth/Agentic-AI-Football-Cup",
+      "commit": "73cfcb6d69eddd9affb91b9fae3e0ed04ea5ab92",
+      "use": "Read forward prompt, fallback and identity helpers; no source copied"
+    }
+  ]
+}

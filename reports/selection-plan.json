@@ -1,0 +1,13 @@
+{
+  "task": "5v5 controlled mobile-support formation comparison",
+  "players": "1 goalkeeper plus 4 outfield players; formation labels omit goalkeeper",
+  "fixed_tactics": "V3 flow/rotate, 30m shot gate, transition memory; no LLM or learned pass model",
+  "initial_roster": "Identical GK/DEF/MID/MID/FWD and attributes for every support-layout experiment",
+  "candidates": ["original", "1-1-2", "1-2-1", "2-1-1", "2-2", "1-1-1-1", "3-1", "1-3", "4-0"],
+  "development": {"seeds": [31,32,33,34], "both_sides": true, "opponents": ["baseline","reference3"]},
+  "validation": {"seeds": [41,42,43,44], "both_sides": true, "opponents": ["baseline","reference3"]},
+  "final": {"seeds": [501,502,503,504,505,506,507,508,509,510], "both_sides": true, "opponents": ["baseline","reference3"]},
+  "selection": "Advance best 2 new layouts by pooled 3W+D points, then goal difference, then goals for, then alphabetical tag; original retained as control. Select validation winner only if it improves pooled points and does not reduce baseline points relative to original. Otherwise retain original. Freeze before final.",
+  "final_control": "Same fresh seeds, original versus both opponents. Do not retune on final results.",
+  "constraints": "Native engine untouched. No historical AWS champion opponents are available. These are full local AgentPitch matches, not official AWS tournament matches. Formations govern mobile support; common possession/marking logic may override rigid lines."
+}

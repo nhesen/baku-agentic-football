@@ -1,0 +1,60 @@
+{
+  "feature_version": 1,
+  "type": "logistic_pass_retention",
+  "features": [
+    "distance",
+    "progress",
+    "lane",
+    "receiver_space",
+    "receiver_goal_distance",
+    "goalkeeper",
+    "width"
+  ],
+  "weights": [
+    -1.2293795372703722,
+    -1.2413576587375412,
+    -0.4321680510200623,
+    2.2271612341252442,
+    0.6614479080594466,
+    2.276259745900176,
+    -0.25742413206475734,
+    1.309202418380698
+  ],
+  "training_samples": 1283,
+  "training_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "validation_model_trained_on": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "validation_seeds": [
+    5,
+    6
+  ],
+  "validation_metrics": {
+    "samples": 444,
+    "retention_rate": 0.7454954954954955,
+    "log_loss": 0.4605420365218806,
+    "brier": 0.14582272345226158,
+    "auc": 0.7998556265540198
+  },
+  "constant_validation_metrics": {
+    "samples": 444,
+    "retention_rate": 0.7454954954954955,
+    "log_loss": 0.5683343839001703,
+    "brier": 0.1901655701254662,
+    "auc": 0.5
+  },
+  "label": "First controlled possession in next 60 ticks, cut at any restart/goal; own team=1",
+  "engine": "AgentPitch ce2ab34a64e28315bd0fb5c41864cd5303b7439e",
+  "scope": "Pass retention in local simulator; not a goal probability or an AWS-trained model",
+  "dataset_sha256": "d9f074d56994cddf9dd843dbe579aec7dedaaafb26159c31911174c3053d274c"
+}

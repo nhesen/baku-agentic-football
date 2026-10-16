@@ -1,0 +1,166 @@
+{
+  "plan_sha256": "1a6f406e9cdf29b136164255546bfbfe5351ec332fa916a8583cc160e12f62aa",
+  "development": {
+    "f_original": {
+      "n": 16,
+      "W": 3,
+      "D": 8,
+      "L": 5,
+      "points": 17,
+      "gf": 3,
+      "ga": 6,
+      "errors": 0
+    },
+    "f_1-1-2": {
+      "n": 16,
+      "W": 3,
+      "D": 9,
+      "L": 4,
+      "points": 18,
+      "gf": 3,
+      "ga": 5,
+      "errors": 0
+    },
+    "f_1-2-1": {
+      "n": 16,
+      "W": 3,
+      "D": 10,
+      "L": 3,
+      "points": 19,
+      "gf": 3,
+      "ga": 3,
+      "errors": 0
+    },
+    "f_2-1-1": {
+      "n": 16,
+      "W": 2,
+      "D": 13,
+      "L": 1,
+      "points": 19,
+      "gf": 3,
+      "ga": 1,
+      "errors": 0
+    },
+    "f_2-2": {
+      "n": 16,
+      "W": 1,
+      "D": 13,
+      "L": 2,
+      "points": 16,
+      "gf": 1,
+      "ga": 2,
+      "errors": 0
+    },
+    "f_1-1-1-1": {
+      "n": 16,
+      "W": 1,
+      "D": 14,
+      "L": 1,
+      "points": 17,
+      "gf": 1,
+      "ga": 1,
+      "errors": 0
+    },
+    "f_3-1": {
+      "n": 16,
+      "W": 0,
+      "D": 12,
+      "L": 4,
+      "points": 12,
+      "gf": 0,
+      "ga": 4,
+      "errors": 0
+    },
+    "f_1-3": {
+      "n": 16,
+      "W": 3,
+      "D": 9,
+      "L": 4,
+      "points": 18,
+      "gf": 4,
+      "ga": 5,
+      "errors": 0
+    },
+    "f_4-0": {
+      "n": 16,
+      "W": 1,
+      "D": 10,
+      "L": 5,
+      "points": 13,
+      "gf": 1,
+      "ga": 5,
+      "errors": 0
+    }
+  },
+  "advance": [
+    "f_2-1-1",
+    "f_1-2-1"
+  ],
+  "validation": {
+    "f_original": {
+      "n": 16,
+      "W": 1,
+      "D": 13,
+      "L": 2,
+      "points": 16,
+      "gf": 1,
+      "ga": 2,
+      "errors": 0
+    },
+    "f_2-1-1": {
+      "n": 16,
+      "W": 1,
+      "D": 15,
+      "L": 0,
+      "points": 18,
+      "gf": 1,
+      "ga": 0,
+      "errors": 0
+    },
+    "f_1-2-1": {
+      "n": 16,
+      "W": 2,
+      "D": 10,
+      "L": 4,
+      "points": 16,
+      "gf": 2,
+      "ga": 4,
+      "errors": 0
+    }
+  },
+  "native_validation": {
+    "f_original": {
+      "n": 8,
+      "W": 1,
+      "D": 5,
+      "L": 2,
+      "points": 8,
+      "gf": 1,
+      "ga": 2,
+      "errors": 0
+    },
+    "f_2-1-1": {
+      "n": 8,
+      "W": 0,
+      "D": 8,
+      "L": 0,
+      "points": 8,
+      "gf": 0,
+      "ga": 0,
+      "errors": 0
+    },
+    "f_1-2-1": {
+      "n": 8,
+      "W": 0,
+      "D": 6,
+      "L": 2,
+      "points": 6,
+      "gf": 0,
+      "ga": 2,
+      "errors": 0
+    }
+  },
+  "selected": "f_2-1-1",
+  "decision": "promote controlled support layout",
+  "policy_versions": "6fb9b2ff5963e591"
+}

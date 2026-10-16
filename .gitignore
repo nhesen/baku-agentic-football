@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+deployment/build/
+node_modules/
+.env
+arns.json
+*.log
+
+.env.*
+!.env.example
+*.zip
+cdk.out/

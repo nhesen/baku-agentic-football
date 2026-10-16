@@ -1,0 +1,11 @@
+{
+  "validation_selected_native_policy_version": "6fb9b2ff5963e591",
+  "recommended_formation": "original",
+  "recommended_behavior": "same as V3 original",
+  "native_profile": "profiles/agentpitch-validated.json",
+  "aws_profile": "profiles/aws-candidate.json",
+  "aws_tested": false,
+  "live_llm_calls": 0,
+  "recommended_native_policy_version": "20fb44b0a4e059c3",
+  "aws_candidate_policy_version": "6a1fe5d9d4fda08c"
+}

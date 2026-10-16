@@ -1,0 +1,19 @@
+{
+  "source": "https://www.kaggle.com/datasets/dott1718/raw-beast-grf-agents",
+  "files": {
+    "deep5_SF220_kl2_cp385.py": {
+      "bytes": 698169,
+      "sha256": "a315a56f52f3bc9a224386e55a8427642faa191c000e51259ac67bb4ee799844"
+    },
+    "nov_23_WK6_unroll64_deep_r3_cp118.py": {
+      "bytes": 698919,
+      "sha256": "3018ff8e7b2c4cf9e15d48419cb90977c217f1d8260058641b14a21c19431f23"
+    }
+  },
+  "inspection": "source text and AST only; encoded weights not loaded; agents not executed",
+  "non_weight_code_identical": true,
+  "environment": "11v11 Google Research Football, 19 actions, fixed pool sizes 10 and 11",
+  "used_as_match_opponents": false,
+  "redistributed": false,
+  "license_displayed": "Unknown"
+}

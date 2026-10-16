@@ -1,0 +1,14 @@
+{
+  "native_engine_commit": "ce2ab34a64e28315bd0fb5c41864cd5303b7439e",
+  "native_geometry": [
+    100,
+    60,
+    7.32
+  ],
+  "ticks_per_match": 1200,
+  "matches": 276,
+  "native_selected_fingerprint": "6fb9b2ff5963e591",
+  "no_live_models": true,
+  "no_aws_champion_opponents": true,
+  "precommitted_plan_sha256": "1a6f406e9cdf29b136164255546bfbfe5351ec332fa916a8583cc160e12f62aa"
+}

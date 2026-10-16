@@ -1,0 +1,42 @@
+[
+  {
+    "file": "replay-first.html",
+    "match_id": "formation_final_f_2-1-1_vs_baseline_s501_team_a",
+    "score": [
+      0,
+      0
+    ],
+    "result": "D",
+    "events_sha256": "1b823fa5ec10c095d09dd45c4b11dda41dbbe6c0948aea3b09965b6c69fda43f"
+  },
+  {
+    "file": "replay-first-W.html",
+    "match_id": "formation_final_f_2-1-1_vs_reference3_s510_team_b",
+    "score": [
+      1,
+      0
+    ],
+    "result": "W",
+    "events_sha256": "ad9659ac09f3c0405560a423c59bd07607e105cf6fa95c08a871c766506b5570"
+  },
+  {
+    "file": "replay-first-L.html",
+    "match_id": "formation_final_f_2-1-1_vs_reference3_s501_team_b",
+    "score": [
+      0,
+      1
+    ],
+    "result": "L",
+    "events_sha256": "0f2e7a921ba27db7dbf7dc124a23da776e9ce148c735c7c01c0555f17612c013"
+  },
+  {
+    "file": "replay-recommended-first.html",
+    "match_id": "formation_final_f_original_vs_baseline_s501_team_a",
+    "score": [
+      1,
+      0
+    ],
+    "result": "W",
+    "events_sha256": "9bf7ad7ac7379c933511f445859bc3a5e78204751cc3f8b2d64c3a7f5001259a"
+  }
+]

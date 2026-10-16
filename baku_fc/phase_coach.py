@@ -40,10 +40,14 @@ def _attack_targets(w,cfg,phase):
     holder=w.owner[1] if w.owner and w.owner[0]==w.team else None
     # A single safety player remains behind the ball; cover swaps when he carries.
     anchor=2 if holder==1 else 1
+    if cfg.combination_tactics != "off":
+        available=[p for p in w.mine if p.pid and p.pid!=holder]
+        if not any(p.pid==anchor for p in available):
+            anchor=min(available,key=lambda p:(p.pos.x*w.sign,p.pid)).pid if available else None
     attacking=[p for p in w.mine if p.pid not in (0,anchor)]
     wide=cfg.phase_tactics=="wide"
     span=min(cfg.pitch_half_width*.58,(16 if wide else 12)*k)
-    targets={anchor:_point(w,cfg,min(u-12*k,12*k),y*.28)}
+    targets={anchor:_point(w,cfg,min(u-12*k,12*k),y*.28)} if anchor is not None else {}
     if phase=="build_up":
         # 1-2-1: two diagonal outlets and a high pivot; no forced pass count.
         positions=[(u+5*k,-span),(u+8*k,span),(u+23*k,-y*.2)]

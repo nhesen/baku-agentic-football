@@ -37,9 +37,12 @@ class Settings:
     minimal_passing: bool = False
     prefer_center: bool = False
     phase_tactics: str = "off"
+    combination_tactics: str = "off"
     formation: str = "original"
 
     def __post_init__(self):
+        if self.combination_tactics not in {"off", "triangles", "give_go", "screen", "combined"}:
+            raise ValueError("unknown combination tactics")
         if self.phase_tactics not in {"off", "attack", "compact", "trigger", "high", "complete", "wide", "pivot"}:
             raise ValueError("unknown phase tactics")
         if self.formation not in {"original", "1-2-1", "1-1-2", "2-1-1", "2-2", "1-1-1-1", "3-1", "1-3", "4-0"}:

@@ -1,0 +1,17 @@
+{
+  "completed_matches": 180,
+  "tests_passed": 74,
+  "skipped": 0,
+  "source_unchanged": true,
+  "control_reproduces_v5_both_sides": true,
+  "five_runtime_builds_verified": true,
+  "profile_fingerprints": {
+    "coaching-combined.json": "85b4097803b892cc",
+    "coaching-give_go.json": "72487b5cac201020",
+    "coaching-off.json": "82a3cce71d4ae59f",
+    "coaching-screen.json": "46a98bc3adf17114",
+    "coaching-triangles.json": "b1adc5084784ebcf"
+  },
+  "archive_sha256": "6e80626261c242d651e047ed960c3c81dd5b70bd5b7f1bcd3f836757cc7cb90a",
+  "live_aws": false
+}

@@ -1,0 +1,413 @@
+{
+  "controlled_matches": 180,
+  "reproduction": 4,
+  "development": 60,
+  "validation": 36,
+  "final": 80,
+  "selected": "c_give_go",
+  "promoted": true,
+  "recommended_combination_tactics": "give_go",
+  "phase_tactics": "attack",
+  "pooled_final": {
+    "c_off": {
+      "n": 40,
+      "W": 6,
+      "D": 25,
+      "L": 9,
+      "gf": 6,
+      "ga": 9,
+      "points": 43,
+      "win_percent": 15.0
+    },
+    "c_give_go": {
+      "n": 40,
+      "W": 7,
+      "D": 27,
+      "L": 6,
+      "gf": 8,
+      "ga": 7,
+      "points": 48,
+      "win_percent": 17.5
+    }
+  },
+  "final_by_opponent": {
+    "baseline": {
+      "c_off": {
+        "n": 20,
+        "W": 2,
+        "D": 13,
+        "L": 5,
+        "gf": 2,
+        "ga": 5,
+        "points": 19,
+        "win_percent": 10.0
+      },
+      "c_give_go": {
+        "n": 20,
+        "W": 3,
+        "D": 14,
+        "L": 3,
+        "gf": 4,
+        "ga": 4,
+        "points": 23,
+        "win_percent": 15.0
+      }
+    },
+    "reference5": {
+      "c_off": {
+        "n": 20,
+        "W": 4,
+        "D": 12,
+        "L": 4,
+        "gf": 4,
+        "ga": 4,
+        "points": 24,
+        "win_percent": 20.0
+      },
+      "c_give_go": {
+        "n": 20,
+        "W": 4,
+        "D": 13,
+        "L": 3,
+        "gf": 4,
+        "ga": 3,
+        "points": 25,
+        "win_percent": 20.0
+      }
+    }
+  },
+  "uncertainty": {
+    "metric": "pooled win percentage points, candidate minus V5 control",
+    "difference_pp": 2.5,
+    "paired_seed_clusters": 10,
+    "bootstrap95": [
+      -10.0,
+      15.0
+    ],
+    "resamples": 20000
+  },
+  "stages": {
+    "dev": {
+      "stage": "dev",
+      "summaries": {
+        "c_combined": {
+          "n": 12,
+          "W": 1,
+          "D": 8,
+          "L": 3,
+          "gf": 1,
+          "ga": 4,
+          "points": 11
+        },
+        "c_give_go": {
+          "n": 12,
+          "W": 2,
+          "D": 8,
+          "L": 2,
+          "gf": 2,
+          "ga": 2,
+          "points": 14
+        },
+        "c_off": {
+          "n": 12,
+          "W": 1,
+          "D": 11,
+          "L": 0,
+          "gf": 1,
+          "ga": 0,
+          "points": 14
+        },
+        "c_screen": {
+          "n": 12,
+          "W": 1,
+          "D": 10,
+          "L": 1,
+          "gf": 1,
+          "ga": 1,
+          "points": 13
+        },
+        "c_triangles": {
+          "n": 12,
+          "W": 0,
+          "D": 11,
+          "L": 1,
+          "gf": 0,
+          "ga": 1,
+          "points": 11
+        }
+      },
+      "new_variants_rank": [
+        "c_give_go",
+        "c_screen",
+        "c_combined",
+        "c_triangles"
+      ],
+      "by_opponent": {
+        "baseline": {
+          "c_combined": {
+            "n": 6,
+            "W": 1,
+            "D": 5,
+            "L": 0,
+            "gf": 1,
+            "ga": 0,
+            "points": 8
+          },
+          "c_give_go": {
+            "n": 6,
+            "W": 1,
+            "D": 4,
+            "L": 1,
+            "gf": 1,
+            "ga": 1,
+            "points": 7
+          },
+          "c_off": {
+            "n": 6,
+            "W": 1,
+            "D": 5,
+            "L": 0,
+            "gf": 1,
+            "ga": 0,
+            "points": 8
+          },
+          "c_screen": {
+            "n": 6,
+            "W": 1,
+            "D": 5,
+            "L": 0,
+            "gf": 1,
+            "ga": 0,
+            "points": 8
+          },
+          "c_triangles": {
+            "n": 6,
+            "W": 0,
+            "D": 5,
+            "L": 1,
+            "gf": 0,
+            "ga": 1,
+            "points": 5
+          }
+        },
+        "reference5": {
+          "c_combined": {
+            "n": 6,
+            "W": 0,
+            "D": 3,
+            "L": 3,
+            "gf": 0,
+            "ga": 4,
+            "points": 3
+          },
+          "c_give_go": {
+            "n": 6,
+            "W": 1,
+            "D": 4,
+            "L": 1,
+            "gf": 1,
+            "ga": 1,
+            "points": 7
+          },
+          "c_off": {
+            "n": 6,
+            "W": 0,
+            "D": 6,
+            "L": 0,
+            "gf": 0,
+            "ga": 0,
+            "points": 6
+          },
+          "c_screen": {
+            "n": 6,
+            "W": 0,
+            "D": 5,
+            "L": 1,
+            "gf": 0,
+            "ga": 1,
+            "points": 5
+          },
+          "c_triangles": {
+            "n": 6,
+            "W": 0,
+            "D": 6,
+            "L": 0,
+            "gf": 0,
+            "ga": 0,
+            "points": 6
+          }
+        }
+      },
+      "advanced": [
+        "c_give_go",
+        "c_screen"
+      ]
+    },
+    "validation": {
+      "stage": "validation",
+      "summaries": {
+        "c_give_go": {
+          "n": 12,
+          "W": 1,
+          "D": 10,
+          "L": 1,
+          "gf": 2,
+          "ga": 2,
+          "points": 13
+        },
+        "c_off": {
+          "n": 12,
+          "W": 3,
+          "D": 8,
+          "L": 1,
+          "gf": 3,
+          "ga": 1,
+          "points": 17
+        },
+        "c_screen": {
+          "n": 12,
+          "W": 0,
+          "D": 11,
+          "L": 1,
+          "gf": 0,
+          "ga": 1,
+          "points": 11
+        }
+      },
+      "new_variants_rank": [
+        "c_give_go",
+        "c_screen"
+      ],
+      "by_opponent": {
+        "baseline": {
+          "c_give_go": {
+            "n": 6,
+            "W": 0,
+            "D": 6,
+            "L": 0,
+            "gf": 1,
+            "ga": 1,
+            "points": 6
+          },
+          "c_off": {
+            "n": 6,
+            "W": 3,
+            "D": 2,
+            "L": 1,
+            "gf": 3,
+            "ga": 1,
+            "points": 11
+          },
+          "c_screen": {
+            "n": 6,
+            "W": 0,
+            "D": 5,
+            "L": 1,
+            "gf": 0,
+            "ga": 1,
+            "points": 5
+          }
+        },
+        "reference5": {
+          "c_give_go": {
+            "n": 6,
+            "W": 1,
+            "D": 4,
+            "L": 1,
+            "gf": 1,
+            "ga": 1,
+            "points": 7
+          },
+          "c_off": {
+            "n": 6,
+            "W": 0,
+            "D": 6,
+            "L": 0,
+            "gf": 0,
+            "ga": 0,
+            "points": 6
+          },
+          "c_screen": {
+            "n": 6,
+            "W": 0,
+            "D": 6,
+            "L": 0,
+            "gf": 0,
+            "ga": 0,
+            "points": 6
+          }
+        }
+      },
+      "selected": "c_give_go"
+    },
+    "final": {
+      "stage": "final",
+      "summaries": {
+        "c_give_go": {
+          "n": 40,
+          "W": 7,
+          "D": 27,
+          "L": 6,
+          "gf": 8,
+          "ga": 7,
+          "points": 48
+        },
+        "c_off": {
+          "n": 40,
+          "W": 6,
+          "D": 25,
+          "L": 9,
+          "gf": 6,
+          "ga": 9,
+          "points": 43
+        }
+      },
+      "new_variants_rank": [
+        "c_give_go"
+      ],
+      "by_opponent": {
+        "baseline": {
+          "c_give_go": {
+            "n": 20,
+            "W": 3,
+            "D": 14,
+            "L": 3,
+            "gf": 4,
+            "ga": 4,
+            "points": 23
+          },
+          "c_off": {
+            "n": 20,
+            "W": 2,
+            "D": 13,
+            "L": 5,
+            "gf": 2,
+            "ga": 5,
+            "points": 19
+          }
+        },
+        "reference5": {
+          "c_give_go": {
+            "n": 20,
+            "W": 4,
+            "D": 13,
+            "L": 3,
+            "gf": 4,
+            "ga": 3,
+            "points": 25
+          },
+          "c_off": {
+            "n": 20,
+            "W": 4,
+            "D": 12,
+            "L": 4,
+            "gf": 4,
+            "ga": 4,
+            "points": 24
+          }
+        }
+      },
+      "promote": true
+    }
+  }
+}

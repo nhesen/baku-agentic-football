@@ -1,0 +1,42 @@
+{
+  "control": "c_off",
+  "frozen_control": "reference5",
+  "variants": [
+    "c_off",
+    "c_triangles",
+    "c_give_go",
+    "c_screen",
+    "c_combined"
+  ],
+  "opponents": [
+    "baseline",
+    "reference5"
+  ],
+  "dev_seeds": [
+    1101,
+    1102,
+    1103
+  ],
+  "validation_seeds": [
+    1111,
+    1112,
+    1113
+  ],
+  "final_seeds": [
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1207,
+    1208,
+    1209,
+    1210
+  ],
+  "development_advance": "Top two new variants: wins, goal difference, goals scored, name.",
+  "validation_selection": "Top new finalist by the same rule; final seeds remain unseen.",
+  "promotion": "Final pooled wins must increase; native baseline wins and points must not fall; pooled goal difference must not fall. Otherwise retain V5 default.",
+  "physics": "Pinned unchanged AgentPitch ce2ab34a64e28315bd0fb5c41864cd5303b7439e, 5 players incl GK, 100x60, 1200 ticks, both sides.",
+  "no_retuning": "Freeze source before development; no changes after seeing scores. Exceptions invalidate/rerun affected paired blocks with audit."
+}

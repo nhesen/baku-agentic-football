@@ -7,6 +7,7 @@ import math
 from .state import Point
 from .formations import support, anchor_id
 from .phase_coach import decision as phase_decision
+from .combinations import enhance
 from .tactics import (Plan, clamp, command, move, stopped_phase, profile_for,
                       formation_target, onside_limit, segment_clearance, shot_facts)
 
@@ -121,6 +122,8 @@ def plan_five(w,cfg):
     presser=presser_for(w,cfg)
     target=cover(w,cfg,presser,target)
     coach=phase_decision(w,cfg) if cfg.phase_tactics != "off" else None
+    if coach and cfg.combination_tactics != "off":
+        coach=enhance(w,cfg,coach)
     if coach:
         if coach['defense_active']:presser=coach['presser']
         if w.pid!=0 and (coach['attack_active'] or coach['defense_active']):
@@ -174,7 +177,7 @@ def plan_five(w,cfg):
             if min(w.mine,key=lambda p:(p.pos.distance(w.ball),p.pid)).pid==0:
                 candidates.insert(0,move(w,w.ball))
     elif presser==w.pid:
-        if coach and coach['defense_active'] and w.status=='OPP' and me.pos.distance(w.ball)>3*cfg.pitch_half_length/50:
+        if coach and coach['defense_active'] and w.status=='OPP' and (me.pos.distance(w.ball)>3*cfg.pitch_half_length/50 or coach.get('delay_only',False)):
             candidates.append(move(w,target,me.stamina>.45))
         if w.status=='OPP' and me.pos.distance(w.ball)<=16*cfg.pitch_half_length/55:
             candidates.append(command(w,'PRESS_BALL',{'intensity':.9},1))

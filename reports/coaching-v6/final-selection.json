@@ -1,0 +1,69 @@
+{
+  "stage": "final",
+  "summaries": {
+    "c_give_go": {
+      "n": 40,
+      "W": 7,
+      "D": 27,
+      "L": 6,
+      "gf": 8,
+      "ga": 7,
+      "points": 48
+    },
+    "c_off": {
+      "n": 40,
+      "W": 6,
+      "D": 25,
+      "L": 9,
+      "gf": 6,
+      "ga": 9,
+      "points": 43
+    }
+  },
+  "new_variants_rank": [
+    "c_give_go"
+  ],
+  "by_opponent": {
+    "baseline": {
+      "c_give_go": {
+        "n": 20,
+        "W": 3,
+        "D": 14,
+        "L": 3,
+        "gf": 4,
+        "ga": 4,
+        "points": 23
+      },
+      "c_off": {
+        "n": 20,
+        "W": 2,
+        "D": 13,
+        "L": 5,
+        "gf": 2,
+        "ga": 5,
+        "points": 19
+      }
+    },
+    "reference5": {
+      "c_give_go": {
+        "n": 20,
+        "W": 4,
+        "D": 13,
+        "L": 3,
+        "gf": 4,
+        "ga": 3,
+        "points": 25
+      },
+      "c_off": {
+        "n": 20,
+        "W": 4,
+        "D": 12,
+        "L": 4,
+        "gf": 4,
+        "ga": 4,
+        "points": 24
+      }
+    }
+  },
+  "promote": true
+}

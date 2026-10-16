@@ -26,5 +26,6 @@
   "minimal_passing": false,
   "prefer_center": false,
   "formation": "original",
-  "phase_tactics": "attack"
+  "phase_tactics": "attack",
+  "combination_tactics": "give_go"
 }

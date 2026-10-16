@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeout
 from .commands import decode, validate
 from .config import Settings, load_settings
 from .state import ContractError, normalize
-from .tactics import ROLES, plan
+from .tactics import ROLES, plan, stopped_phase
 from .version import policy_fingerprint
 
 SYSTEM = """You select the next action for one autonomous 5v5 football player.
@@ -95,6 +95,27 @@ class Engine:
                 w = replace(w, loss_age=age if self._phase_team != w.team else None,
                             gain_age=age if self._phase_team == w.team else None)
             self._phase_identity, self._phase_time = (w.match_id, w.team), w.time
+        if self.cfg.combination_tactics != "off":
+            # A run starts only after an observed same-team ownership transfer.
+            # Never infer that an intended pass actually reached its target.
+            identity = (w.match_id, w.team)
+            reset = (getattr(self, "_combo_identity", None) != identity or
+                     w.time < getattr(self, "_combo_time", -1) or
+                     stopped_phase(w) or
+                     w.restart_team is not None or w.status in {"OPP", "UNKNOWN"})
+            if reset:
+                self._combo_owner = None
+                self._combo_run = None
+            previous = getattr(self, "_combo_owner", None)
+            if w.owner is not None:
+                if (not reset and previous and previous[0][0] == w.team and w.owner[0] == w.team
+                        and previous[0] != w.owner and 0 < w.time-previous[1] <= 3):
+                    self._combo_run = (previous[0][1], w.time)
+                self._combo_owner = (w.owner, w.time)
+            run = getattr(self, "_combo_run", None)
+            if run and 0 <= w.time-run[1] <= 2.5:
+                w = replace(w, last_passer=run[0], pass_age=w.time-run[1])
+            self._combo_identity, self._combo_time = identity, w.time
         p = plan(w, self.cfg)
         # The fallback itself passes exactly the same guards as model output.
         selected = validate(p.fallback, w, p, self.cfg)

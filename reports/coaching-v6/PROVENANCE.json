@@ -1,0 +1,18 @@
+{
+  "engine_commit": "ce2ab34a64e28315bd0fb5c41864cd5303b7439e",
+  "pitch": [
+    100,
+    60
+  ],
+  "goal_width": 7.32,
+  "roster": "GK+DEF+MID+MID+FWD on both sides",
+  "ticks": 1200,
+  "adapter": "r3-native-stale-holder-guard",
+  "plan_sha256": "09699164b61d97b4c517b1cbe294abfc7649fa05f1bae0829dfa1dc8ff6cdcc8",
+  "runner_sha256": "5aa7514af8ad7e8c137bfc7d140922530bcc9a06eed09d77da12734895fce01d",
+  "frozen_source_sha256": "54acd4dff09c1324c342b037513eddea39bcca06d88336c4ee73f6734b5dfa21",
+  "source_frozen_across_stages": true,
+  "synthetic_scores": false,
+  "live_aws": false,
+  "llm_enabled": false
+}

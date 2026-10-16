@@ -1,10 +1,10 @@
 {
-  "label": "Baku FC V5 phase tactics",
-  "recommended_phase_tactics": "attack",
-  "selected_experimental": "attack",
+  "label": "Baku FC V6 coaching experiments",
+  "selected": "c_give_go",
   "promoted": true,
-  "native_fingerprint": "f3522a2a0850b428",
-  "aws_fingerprint": "f7a6876f550ecb51",
-  "live_aws_tested": false,
-  "live_llm_calls": 0
+  "phase_tactics": "attack",
+  "combination_tactics": "give_go",
+  "native_fingerprint": "72487b5cac201020",
+  "aws_candidate_fingerprint": "c42fb85e84e47400",
+  "aws_live_tested": false
 }

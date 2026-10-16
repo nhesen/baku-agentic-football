@@ -97,6 +97,8 @@ class World:
     loss_age: float | None = None
     gain_age: float | None = None
     center_aim_supported: bool = False
+    last_passer: int | None = None
+    pass_age: float | None = None
 
     @property
     def me(self):

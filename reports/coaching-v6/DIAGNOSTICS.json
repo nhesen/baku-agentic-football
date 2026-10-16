@@ -1,0 +1,128 @@
+{
+  "combo_dev": {
+    "c_combined": {
+      "passes": 335,
+      "forward_passes": 151,
+      "back_passes": 119,
+      "possession_ticks": 5171,
+      "own_third_ticks": 913,
+      "final_third_ticks": 384,
+      "shots": 32,
+      "shots_slot_3": 14,
+      "shots_slot_4": 11,
+      "shots_slot_2": 7
+    },
+    "c_give_go": {
+      "passes": 345,
+      "forward_passes": 131,
+      "back_passes": 132,
+      "possession_ticks": 5095,
+      "own_third_ticks": 768,
+      "final_third_ticks": 296,
+      "shots": 21,
+      "shots_slot_4": 6,
+      "shots_slot_2": 7,
+      "shots_slot_3": 8
+    },
+    "c_off": {
+      "passes": 321,
+      "forward_passes": 125,
+      "back_passes": 133,
+      "possession_ticks": 5060,
+      "own_third_ticks": 569,
+      "final_third_ticks": 563,
+      "shots": 44,
+      "shots_slot_3": 13,
+      "shots_slot_2": 8,
+      "shots_slot_4": 23
+    },
+    "c_screen": {
+      "passes": 318,
+      "forward_passes": 132,
+      "back_passes": 112,
+      "possession_ticks": 4924,
+      "own_third_ticks": 863,
+      "final_third_ticks": 504,
+      "shots": 40,
+      "shots_slot_4": 20,
+      "shots_slot_3": 16,
+      "shots_slot_2": 4
+    },
+    "c_triangles": {
+      "passes": 309,
+      "forward_passes": 121,
+      "back_passes": 121,
+      "possession_ticks": 4832,
+      "own_third_ticks": 527,
+      "final_third_ticks": 604,
+      "shots": 50,
+      "shots_slot_2": 10,
+      "shots_slot_3": 25,
+      "shots_slot_4": 15
+    }
+  },
+  "combo_validation": {
+    "c_give_go": {
+      "possession_ticks": 5003,
+      "own_third_ticks": 602,
+      "final_third_ticks": 462,
+      "passes": 315,
+      "forward_passes": 124,
+      "back_passes": 124,
+      "shots": 39,
+      "shots_slot_4": 13,
+      "shots_slot_3": 17,
+      "shots_slot_2": 9
+    },
+    "c_off": {
+      "possession_ticks": 4966,
+      "own_third_ticks": 602,
+      "final_third_ticks": 495,
+      "passes": 311,
+      "forward_passes": 120,
+      "back_passes": 114,
+      "shots": 44,
+      "shots_slot_4": 20,
+      "shots_slot_2": 7,
+      "shots_slot_3": 17
+    },
+    "c_screen": {
+      "possession_ticks": 5065,
+      "own_third_ticks": 703,
+      "final_third_ticks": 570,
+      "passes": 322,
+      "forward_passes": 141,
+      "back_passes": 113,
+      "shots": 44,
+      "shots_slot_3": 13,
+      "shots_slot_4": 24,
+      "shots_slot_2": 7
+    }
+  },
+  "combo_final": {
+    "c_give_go": {
+      "passes": 1038,
+      "forward_passes": 415,
+      "back_passes": 403,
+      "possession_ticks": 16963,
+      "own_third_ticks": 2238,
+      "final_third_ticks": 1680,
+      "shots": 129,
+      "shots_slot_4": 61,
+      "shots_slot_3": 42,
+      "shots_slot_2": 26
+    },
+    "c_off": {
+      "passes": 1040,
+      "forward_passes": 402,
+      "back_passes": 384,
+      "possession_ticks": 16078,
+      "own_third_ticks": 2145,
+      "final_third_ticks": 1901,
+      "shots": 138,
+      "shots_slot_4": 58,
+      "shots_slot_2": 26,
+      "shots_slot_3": 54
+    }
+  }
+}

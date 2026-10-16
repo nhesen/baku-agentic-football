@@ -111,6 +111,10 @@
     {
       "name": "V5 FIFA futsal phase references",
       "use": "See TAKTIKA_AZ.md for primary sources and exact implementation limits"
+    },
+    {
+      "name": "V6 English 5v5 coaching articles and empirical studies",
+      "use": "RESEARCH_AZ.md lists all 15 sources, reading coverage, implementation and limits."
     }
   ]
 }

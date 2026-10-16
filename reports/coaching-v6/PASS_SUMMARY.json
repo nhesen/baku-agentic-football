@@ -1,0 +1,58 @@
+{
+  "combo_dev": {
+    "c_combined": {
+      "accepted_passes": 333,
+      "next_possession_ours_within_60_ticks": 279,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_give_go": {
+      "accepted_passes": 341,
+      "next_possession_ours_within_60_ticks": 294,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_off": {
+      "accepted_passes": 319,
+      "next_possession_ours_within_60_ticks": 285,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_screen": {
+      "accepted_passes": 313,
+      "next_possession_ours_within_60_ticks": 273,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_triangles": {
+      "accepted_passes": 309,
+      "next_possession_ours_within_60_ticks": 273,
+      "exact_receiver_often_unavailable": true
+    }
+  },
+  "combo_validation": {
+    "c_give_go": {
+      "accepted_passes": 315,
+      "next_possession_ours_within_60_ticks": 284,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_off": {
+      "accepted_passes": 309,
+      "next_possession_ours_within_60_ticks": 276,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_screen": {
+      "accepted_passes": 318,
+      "next_possession_ours_within_60_ticks": 303,
+      "exact_receiver_often_unavailable": true
+    }
+  },
+  "combo_final": {
+    "c_give_go": {
+      "accepted_passes": 1025,
+      "next_possession_ours_within_60_ticks": 897,
+      "exact_receiver_often_unavailable": true
+    },
+    "c_off": {
+      "accepted_passes": 1025,
+      "next_possession_ours_within_60_ticks": 912,
+      "exact_receiver_often_unavailable": true
+    }
+  }
+}

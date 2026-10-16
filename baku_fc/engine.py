@@ -42,6 +42,8 @@ class Engine:
         self.counts = Counter()
         self._last_seen = None
         self._last_control = None
+        self._phase_team = None
+        self._phase_changed_at = None
 
     def _inference(self, system, user):
         with self._lock:
@@ -78,6 +80,21 @@ class Engine:
                     and abs(w.velocity.x)+abs(w.velocity.y)>1 and w.restart_team is None):
                 w=replace(w,our_pass_in_flight=True)
             self._last_seen=(identity,w.time)
+        if self.cfg.phase_tactics != "off":
+            # Observed possession only; no opponent policy or hidden state.
+            if getattr(self, "_phase_identity", None) != (w.match_id, w.team) or w.time < getattr(self, "_phase_time", -1):
+                self._phase_team = None
+                self._phase_changed_at = None
+            if w.owner is not None:
+                side = w.owner[0]
+                if self._phase_team is not None and side != self._phase_team:
+                    self._phase_changed_at = w.time
+                self._phase_team = side
+            if self._phase_changed_at is not None:
+                age = max(0., w.time-self._phase_changed_at)
+                w = replace(w, loss_age=age if self._phase_team != w.team else None,
+                            gain_age=age if self._phase_team == w.team else None)
+            self._phase_identity, self._phase_time = (w.match_id, w.team), w.time
         p = plan(w, self.cfg)
         # The fallback itself passes exactly the same guards as model output.
         selected = validate(p.fallback, w, p, self.cfg)
@@ -107,6 +124,7 @@ class Engine:
             "policy_version": self.version, "command_type": selected["commandType"] if selected else None,
             "possession": w.status, "ownership_evidence": w.ownership_evidence,
             "profile": p.profile, "presser": p.presser,
+            "tactical": p.facts.get("tactical",{}),
             "elapsed_ms": round((time.perf_counter() - started) * 1000, 3),
         }}
 

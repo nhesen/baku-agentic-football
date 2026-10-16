@@ -1,0 +1,48 @@
+{
+  "purpose": "5v5 phase-dependent football tactics; wins are the primary objective",
+  "frozen_variants": [
+    "t_off",
+    "t_attack",
+    "t_compact",
+    "t_trigger",
+    "t_high",
+    "t_complete",
+    "t_wide",
+    "t_pivot"
+  ],
+  "opponents": [
+    "baseline",
+    "reference3"
+  ],
+  "development_seeds": [
+    721,
+    722,
+    723
+  ],
+  "validation_seeds": [
+    731,
+    732,
+    733
+  ],
+  "final_seeds": [
+    901,
+    902,
+    903,
+    904,
+    905,
+    906,
+    907,
+    908,
+    909,
+    910
+  ],
+  "both_sides": true,
+  "development_advance": "Top two new variants by pooled win count, goal difference, goals scored, then ascending name. No test-time retuning.",
+  "validation_selection": "Rank the two advanced variants by pooled wins, goal difference, goals scored, name. Record comparison with t_off; select best new variant for held-out evaluation even if it loses validation.",
+  "final_default_gate": "Promote only if pooled wins exceed control, native baseline wins and points do not fall, and pooled goal difference does not fall. Otherwise retain original default and publish new tactics as experimental.",
+  "uncertainty": "Report seed-cluster paired bootstrap intervals; win percentage is a local estimate, never probability of winning AWS Cup.",
+  "engine": "ce2ab34a64e28315bd0fb5c41864cd5303b7439e",
+  "physics": "Unmodified native 1200-tick full matches, 100x60 pitch, 7.32 goal width; 1 GK plus 4 outfield players on each side",
+  "models": "No live LLM, no neural retraining; parameter-freezing tactical hypotheses and opponent evaluation",
+  "integration_pilot": "r1 output folders v5-dev-* retained separately; interrupted after finding approach target was overridden by direct press command. r2 uses new seeds and a frozen source. Partial pilot matches are never included as completed controlled evidence."
+}

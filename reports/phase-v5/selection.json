@@ -1,0 +1,35 @@
+{
+  "selected": "t_attack",
+  "summaries": {
+    "t_attack": {
+      "n": 12,
+      "W": 2,
+      "D": 8,
+      "L": 2,
+      "gf": 3,
+      "ga": 3,
+      "points": 14
+    },
+    "t_off": {
+      "n": 12,
+      "W": 4,
+      "D": 6,
+      "L": 2,
+      "gf": 5,
+      "ga": 3,
+      "points": 18
+    },
+    "t_wide": {
+      "n": 12,
+      "W": 0,
+      "D": 10,
+      "L": 2,
+      "gf": 1,
+      "ga": 3,
+      "points": 10
+    }
+  },
+  "rule": "Rank the two advanced variants by pooled wins, goal difference, goals scored, name. Record comparison with t_off; select best new variant for held-out evaluation even if it loses validation.",
+  "plan_sha256": "5432ccb74fbea50bd58fe41ec3bb397db2cfb9f4042d4725f00e940420b1aefc",
+  "policy_version": "f3522a2a0850b428"
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "file": "replay-first.html",
+    "match_id": "phase_final_t_attack_vs_baseline_s901_team_a",
+    "split": "phase_final",
+    "score": [
+      0,
+      0
+    ],
+    "result": "D",
+    "events_sha256": "d1231b7a26822c91a07560cc63dd52f363f0343427320b28a630144a27c24dd1"
+  },
+  {
+    "file": "replay-first-W.html",
+    "match_id": "phase_final_t_attack_vs_baseline_s903_team_a",
+    "split": "phase_final",
+    "score": [
+      1,
+      0
+    ],
+    "result": "W",
+    "events_sha256": "eeb1ae1c2cd5d0cee1d611e8f0f4aae201db4093eee05c8179257d4fa8e61696"
+  },
+  {
+    "file": "replay-first-L.html",
+    "match_id": "phase_final_t_attack_vs_baseline_s902_team_b",
+    "split": "phase_final",
+    "score": [
+      0,
+      1
+    ],
+    "result": "L",
+    "events_sha256": "e101942e3dcf236610a79cd33438b95eac492996dd45302fac937bfd6cc6b8cf"
+  },
+  {
+    "file": "replay-wide-development-first.html",
+    "match_id": "phase_dev_t_wide_vs_baseline_s721_team_a",
+    "split": "phase_dev",
+    "score": [
+      1,
+      0
+    ],
+    "result": "W",
+    "events_sha256": "aa4ce1a7e8f603e880a81863ab8a709b884fa952a6e5fff5e1e10bdf0155d3d7"
+  }
+]

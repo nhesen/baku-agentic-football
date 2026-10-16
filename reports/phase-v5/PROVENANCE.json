@@ -1,0 +1,24 @@
+{
+  "engine": "ce2ab34a64e28315bd0fb5c41864cd5303b7439e",
+  "frozen_candidate": {
+    "attack.py": "ebd1a9879bf29ed842b782d1c430e07dce48afc81fa13a41e47091c7ea3200ae",
+    "cli.py": "b4668b792b623aa3ab586c09741cc0cfe4e3f8631a2138b25a02def2051ff02c",
+    "commands.py": "d1381f8df7141da13a90fd191ffb7832091d03a380edc791c6fcd66c4418f19f",
+    "config.py": "b0aab995d3a7dbc93796ad00785b42498e130fb1808948b5ef869258b0a88b50",
+    "engine.py": "a7525a8e22846ba7c61caddb813aecba1f58f503b38a637392cc98a00937a8e4",
+    "formations.py": "6ac814104da9e124f57fe6cad50c578c4234e2f631d98e76baec8cbb7a906a6d",
+    "learned.py": "37bb53028141d20f9a1ccf539ce01a82d463baa5e14892809043b37a0afb7430",
+    "pass_model.json": "4aa3ab3a3a2efcca397a84c237386afdb8f3952ae68f9e3254772f68b88e06c5",
+    "phase_coach.py": "3b0d5790636988f0532a8e2e7515866e464e8e34caf4b19e44261b37fafa1483",
+    "runtime.py": "920a4cf176f1b0ecefdcf0fc21dbb79404e49ce66a63b37adbc9adc322c96b48",
+    "settings.json": "e1b64cc0f52e5a98176c8ae8df7c0a14afed82b8cc43951bd259b8dc2800d6f1",
+    "state.py": "47abcd03b7a4b1c795b0cc2ffcf76c865a108a3c10d0f611800be567dd7947af",
+    "tactics.py": "3e35590c6364459c86ae89b4cf4af1bc6757fc69a70107e25370a479600cf59d",
+    "version.py": "25c362ed230dc1f3b2de94fd8d276c0bec5e01742d2e7e7914a9ad3cf5e7f52f",
+    "__init__.py": "89d39276b640944339d479ebcd640b5b46c1e4e21199ed33d776f3e888e91173"
+  },
+  "plan_sha256": "5432ccb74fbea50bd58fe41ec3bb397db2cfb9f4042d4725f00e940420b1aefc",
+  "matches": 216,
+  "no_live_llm": true,
+  "no_live_aws": true
+}

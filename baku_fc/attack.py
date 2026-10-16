@@ -6,6 +6,7 @@ from __future__ import annotations
 import math
 from .state import Point
 from .formations import support, anchor_id
+from .phase_coach import decision as phase_decision
 from .tactics import (Plan, clamp, command, move, stopped_phase, profile_for,
                       formation_target, onside_limit, segment_clearance, shot_facts)
 
@@ -119,6 +120,11 @@ def plan_five(w,cfg):
     target=shape(w,cfg,mode)
     presser=presser_for(w,cfg)
     target=cover(w,cfg,presser,target)
+    coach=phase_decision(w,cfg) if cfg.phase_tactics != "off" else None
+    if coach:
+        if coach['defense_active']:presser=coach['presser']
+        if w.pid!=0 and (coach['attack_active'] or coach['defense_active']):
+            target=coach['targets'].get(w.pid,target)
     allowed,shot,aim=shot_facts(w,cfg)
     passes=pass_menu(w,cfg) if w.status=='ME' else []
     candidates=[]
@@ -168,6 +174,8 @@ def plan_five(w,cfg):
             if min(w.mine,key=lambda p:(p.pos.distance(w.ball),p.pid)).pid==0:
                 candidates.insert(0,move(w,w.ball))
     elif presser==w.pid:
+        if coach and coach['defense_active'] and w.status=='OPP' and me.pos.distance(w.ball)>3*cfg.pitch_half_length/50:
+            candidates.append(move(w,target,me.stamina>.45))
         if w.status=='OPP' and me.pos.distance(w.ball)<=16*cfg.pitch_half_length/55:
             candidates.append(command(w,'PRESS_BALL',{'intensity':.9},1))
         speed=math.hypot(w.velocity.x,w.velocity.y)
@@ -185,7 +193,8 @@ def plan_five(w,cfg):
         if w.status=='ME' and w.restart_team==w.team:
             candidates=([command(w,'PASS',{'target_player_id':p['pid'],'type':cfg.pass_type}) for p in passes[:2]]
                         if me.can_kick and (w.restart_player is None or w.restart_player==w.pid) else []) or [command(w,'SET_STANCE',{'stance':0})]
-    facts=dict(role=('goalkeeper','anchor','pivot','second_forward' if cfg.scheme=='pair' else 'right_support','striker')[w.pid],
+    tactical_facts={k:v for k,v in coach.items() if k!='targets'} if coach else {}
+    facts=dict(tactical=tactical_facts,role=('goalkeeper','anchor','pivot','second_forward' if cfg.scheme=='pair' else 'right_support','striker')[w.pid],
                scheme=cfg.scheme,formation=cfg.formation,players_per_side=5,outfield_players=4,possession=w.status,team=w.team,player=w.pid,
                attack_direction=w.sign,designated_presser=presser,score_us_them=[w.us,w.them],remaining_seconds=w.remaining,
                passes=passes,shot=shot,shape_target=[target.x,target.y],can_kick=me.can_kick if me else None,

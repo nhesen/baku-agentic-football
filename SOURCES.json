@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-10-17",
   "event_date": "2026-10-17",
-  "implementation": "Original V3 five-player tactical policy; goal-oriented heuristic, role transitions and observation memory. No new PPO/LSTM weights; live AWS/LLM match performance not measured.",
+  "implementation": "V5 phase-based tactical rules and observed possession memory; no neural retraining; local native evaluation only.",
   "sources": [
     {
       "name": "AWS official workshop executable sample and deployment template",
@@ -107,6 +107,10 @@
       "url": "https://github.com/snehasrikanth/Agentic-AI-Football-Cup",
       "commit": "73cfcb6d69eddd9affb91b9fae3e0ed04ea5ab92",
       "use": "Read forward prompt, fallback and identity helpers; no source copied"
+    },
+    {
+      "name": "V5 FIFA futsal phase references",
+      "use": "See TAKTIKA_AZ.md for primary sources and exact implementation limits"
     }
   ]
 }

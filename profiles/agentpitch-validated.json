@@ -25,5 +25,6 @@
   "release_anchor": true,
   "minimal_passing": false,
   "prefer_center": false,
-  "formation": "original"
+  "formation": "original",
+  "phase_tactics": "attack"
 }

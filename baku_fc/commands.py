@@ -78,7 +78,7 @@ def validate(raw, w: World, p: Plan, cfg: Settings) -> dict | None:
         if w.pid == 0:
             x = w.sign * clamp(x * w.sign, -cfg.pitch_half_length + 0.5, -cfg.pitch_half_length + 12)
             y = clamp(y, -cfg.goal_half_width * 0.9, cfg.goal_half_width * 0.9)
-        if w.pid == anchor_id(w,cfg) and not (cfg.release_anchor and w.status == "ME") and cfg.formation != "4-0":
+        if w.pid == anchor_id(w,cfg) and not (cfg.release_anchor and w.status == "ME") and cfg.formation != "4-0" and cfg.phase_tactics not in {"attack", "complete", "wide", "pivot"}:
             x = w.sign * min(x * w.sign, -3)
         params = {"target_x": round(x, 2), "target_y": round(y, 2),
                   "sprint": params.get("sprint") is True and bool(w.me and w.me.stamina >= 0.35)}

@@ -1,0 +1,3 @@
+# Policy fingerprints include original source bytes on every platform.
+baku_fc/*.py -text
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

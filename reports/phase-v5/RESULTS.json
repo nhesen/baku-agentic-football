@@ -1,0 +1,205 @@
+{
+  "controlled_completed_matches": 216,
+  "reproduction": 4,
+  "development": 96,
+  "validation": 36,
+  "final": 80,
+  "selected": "t_attack",
+  "recommended_phase_tactics": "attack",
+  "promoted": true,
+  "summaries": {
+    "phase_dev": {
+      "t_attack": {
+        "n": 12,
+        "W": 2,
+        "D": 8,
+        "L": 2,
+        "gf": 2,
+        "ga": 2,
+        "points": 14,
+        "win_percent": 16.67
+      },
+      "t_compact": {
+        "n": 12,
+        "W": 0,
+        "D": 7,
+        "L": 5,
+        "gf": 0,
+        "ga": 9,
+        "points": 7,
+        "win_percent": 0.0
+      },
+      "t_complete": {
+        "n": 12,
+        "W": 0,
+        "D": 11,
+        "L": 1,
+        "gf": 0,
+        "ga": 1,
+        "points": 11,
+        "win_percent": 0.0
+      },
+      "t_high": {
+        "n": 12,
+        "W": 0,
+        "D": 9,
+        "L": 3,
+        "gf": 0,
+        "ga": 3,
+        "points": 9,
+        "win_percent": 0.0
+      },
+      "t_off": {
+        "n": 12,
+        "W": 0,
+        "D": 11,
+        "L": 1,
+        "gf": 0,
+        "ga": 1,
+        "points": 11,
+        "win_percent": 0.0
+      },
+      "t_pivot": {
+        "n": 12,
+        "W": 0,
+        "D": 11,
+        "L": 1,
+        "gf": 0,
+        "ga": 1,
+        "points": 11,
+        "win_percent": 0.0
+      },
+      "t_trigger": {
+        "n": 12,
+        "W": 0,
+        "D": 9,
+        "L": 3,
+        "gf": 0,
+        "ga": 3,
+        "points": 9,
+        "win_percent": 0.0
+      },
+      "t_wide": {
+        "n": 12,
+        "W": 3,
+        "D": 6,
+        "L": 3,
+        "gf": 3,
+        "ga": 3,
+        "points": 15,
+        "win_percent": 25.0
+      }
+    },
+    "phase_validation": {
+      "t_attack": {
+        "n": 12,
+        "W": 2,
+        "D": 8,
+        "L": 2,
+        "gf": 3,
+        "ga": 3,
+        "points": 14,
+        "win_percent": 16.67
+      },
+      "t_off": {
+        "n": 12,
+        "W": 4,
+        "D": 6,
+        "L": 2,
+        "gf": 5,
+        "ga": 3,
+        "points": 18,
+        "win_percent": 33.33
+      },
+      "t_wide": {
+        "n": 12,
+        "W": 0,
+        "D": 10,
+        "L": 2,
+        "gf": 1,
+        "ga": 3,
+        "points": 10,
+        "win_percent": 0.0
+      }
+    }
+  },
+  "final_summaries": {
+    "baseline": {
+      "t_off": {
+        "n": 20,
+        "W": 2,
+        "D": 16,
+        "L": 2,
+        "gf": 3,
+        "ga": 2,
+        "points": 22,
+        "win_percent": 10.0
+      },
+      "t_attack": {
+        "n": 20,
+        "W": 4,
+        "D": 13,
+        "L": 3,
+        "gf": 4,
+        "ga": 3,
+        "points": 25,
+        "win_percent": 20.0
+      }
+    },
+    "reference3": {
+      "t_off": {
+        "n": 20,
+        "W": 4,
+        "D": 12,
+        "L": 4,
+        "gf": 5,
+        "ga": 5,
+        "points": 24,
+        "win_percent": 20.0
+      },
+      "t_attack": {
+        "n": 20,
+        "W": 7,
+        "D": 10,
+        "L": 3,
+        "gf": 11,
+        "ga": 3,
+        "points": 31,
+        "win_percent": 35.0
+      }
+    }
+  },
+  "pooled_final": {
+    "t_off": {
+      "n": 40,
+      "W": 6,
+      "D": 28,
+      "L": 6,
+      "gf": 8,
+      "ga": 7,
+      "points": 46,
+      "win_percent": 15.0
+    },
+    "t_attack": {
+      "n": 40,
+      "W": 11,
+      "D": 23,
+      "L": 6,
+      "gf": 15,
+      "ga": 6,
+      "points": 56,
+      "win_percent": 27.5
+    }
+  },
+  "uncertainty": {
+    "scope": "pooled two-opponent win percentage points, new minus control",
+    "difference": 12.5,
+    "paired_seed_clusters": 10,
+    "games_per_variant": 40,
+    "bootstrap95": [
+      -5.0,
+      30.0
+    ],
+    "resamples": 20000
+  }
+}

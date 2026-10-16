@@ -36,9 +36,12 @@ class Settings:
     release_anchor: bool = False
     minimal_passing: bool = False
     prefer_center: bool = False
+    phase_tactics: str = "off"
     formation: str = "original"
 
     def __post_init__(self):
+        if self.phase_tactics not in {"off", "attack", "compact", "trigger", "high", "complete", "wide", "pivot"}:
+            raise ValueError("unknown phase tactics")
         if self.formation not in {"original", "1-2-1", "1-1-2", "2-1-1", "2-2", "1-1-1-1", "3-1", "1-3", "4-0"}:
             raise ValueError("formation must describe four outfield players")
         if any(type(v) is not bool for v in (self.track_transitions,self.early_shot,self.release_anchor,self.minimal_passing,self.prefer_center)):

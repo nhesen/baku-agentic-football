@@ -1,0 +1,81 @@
+{
+  "advanced": [
+    "t_wide",
+    "t_attack"
+  ],
+  "summaries": {
+    "t_attack": {
+      "n": 12,
+      "W": 2,
+      "D": 8,
+      "L": 2,
+      "gf": 2,
+      "ga": 2,
+      "points": 14
+    },
+    "t_compact": {
+      "n": 12,
+      "W": 0,
+      "D": 7,
+      "L": 5,
+      "gf": 0,
+      "ga": 9,
+      "points": 7
+    },
+    "t_complete": {
+      "n": 12,
+      "W": 0,
+      "D": 11,
+      "L": 1,
+      "gf": 0,
+      "ga": 1,
+      "points": 11
+    },
+    "t_high": {
+      "n": 12,
+      "W": 0,
+      "D": 9,
+      "L": 3,
+      "gf": 0,
+      "ga": 3,
+      "points": 9
+    },
+    "t_off": {
+      "n": 12,
+      "W": 0,
+      "D": 11,
+      "L": 1,
+      "gf": 0,
+      "ga": 1,
+      "points": 11
+    },
+    "t_pivot": {
+      "n": 12,
+      "W": 0,
+      "D": 11,
+      "L": 1,
+      "gf": 0,
+      "ga": 1,
+      "points": 11
+    },
+    "t_trigger": {
+      "n": 12,
+      "W": 0,
+      "D": 9,
+      "L": 3,
+      "gf": 0,
+      "ga": 3,
+      "points": 9
+    },
+    "t_wide": {
+      "n": 12,
+      "W": 3,
+      "D": 6,
+      "L": 3,
+      "gf": 3,
+      "ga": 3,
+      "points": 15
+    }
+  },
+  "rule": "Top two new variants by pooled win count, goal difference, goals scored, then ascending name. No test-time retuning."
+}

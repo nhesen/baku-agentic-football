@@ -94,6 +94,8 @@ class World:
     restart_player: int | None = None
     offside_enabled: bool = False  # Activate only when the engine explicitly confirms it.
     our_pass_in_flight: bool = False
+    loss_age: float | None = None
+    gain_age: float | None = None
     center_aim_supported: bool = False
 
     @property

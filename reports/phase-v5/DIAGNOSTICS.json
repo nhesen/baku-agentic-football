@@ -1,0 +1,99 @@
+{
+  "baseline": {
+    "t_off": {
+      "possession_ticks": 9252,
+      "own_third_ticks": 1463,
+      "final_third_ticks": 936,
+      "passes": 605,
+      "forward_passes": 238,
+      "back_passes": 232,
+      "shots": 70,
+      "shots_slot_4": 32,
+      "shots_slot_3": 20,
+      "shots_slot_2": 18,
+      "attack_mean_width": 14.53,
+      "attack_mean_depth": 21.67,
+      "attack_one_goal_side_percent": 82.22,
+      "defense_mean_width": 13.21,
+      "defense_mean_depth": 23.28,
+      "defense_one_goal_side_percent": 87.05,
+      "tactical_counts": {}
+    },
+    "t_attack": {
+      "possession_ticks": 8904,
+      "own_third_ticks": 1462,
+      "final_third_ticks": 1183,
+      "passes": 546,
+      "forward_passes": 215,
+      "back_passes": 199,
+      "shots": 95,
+      "shots_slot_4": 46,
+      "shots_slot_2": 20,
+      "shots_slot_3": 29,
+      "attack_mean_width": 17.78,
+      "attack_mean_depth": 19.29,
+      "attack_one_goal_side_percent": 81.51,
+      "defense_mean_width": 14.52,
+      "defense_mean_depth": 22.78,
+      "defense_one_goal_side_percent": 83.98,
+      "tactical_counts": {
+        "t_attack:phase:restart": 3281,
+        "t_attack:phase:loose_ball": 28765,
+        "t_attack:phase:mid_block": 17235,
+        "t_attack:phase:counter_attack": 28799,
+        "t_attack:phase:progression": 26631,
+        "t_attack:phase:final_third": 7588,
+        "t_attack:phase:build_up": 295,
+        "t_attack:phase:uncertain_recover": 68
+      }
+    }
+  },
+  "reference3": {
+    "t_off": {
+      "possession_ticks": 7525,
+      "own_third_ticks": 601,
+      "final_third_ticks": 804,
+      "passes": 463,
+      "forward_passes": 169,
+      "back_passes": 162,
+      "shots": 64,
+      "shots_slot_3": 18,
+      "shots_slot_4": 30,
+      "shots_slot_2": 16,
+      "attack_mean_width": 13.85,
+      "attack_mean_depth": 19.62,
+      "attack_one_goal_side_percent": 89.12,
+      "defense_mean_width": 13.09,
+      "defense_mean_depth": 18.01,
+      "defense_one_goal_side_percent": 67.26,
+      "tactical_counts": {}
+    },
+    "t_attack": {
+      "possession_ticks": 7134,
+      "own_third_ticks": 355,
+      "final_third_ticks": 1289,
+      "passes": 411,
+      "forward_passes": 165,
+      "back_passes": 143,
+      "shots": 91,
+      "shots_slot_3": 27,
+      "shots_slot_4": 39,
+      "shots_slot_2": 25,
+      "attack_mean_width": 17.02,
+      "attack_mean_depth": 17.65,
+      "attack_one_goal_side_percent": 91.69,
+      "defense_mean_width": 14.18,
+      "defense_mean_depth": 16.27,
+      "defense_one_goal_side_percent": 67.43,
+      "tactical_counts": {
+        "t_attack:phase:restart": 1155,
+        "t_attack:phase:loose_ball": 23775,
+        "t_attack:phase:mid_block": 37125,
+        "t_attack:phase:counter_attack": 32175,
+        "t_attack:phase:progression": 11855,
+        "t_attack:phase:final_third": 6345,
+        "t_attack:phase:build_up": 40
+      }
+    }
+  }
+}

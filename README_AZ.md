@@ -1,13 +1,9 @@
-# Baku FC V4 — 5v5 düzülüş araşdırması
+# Baku FC V5 — fazaya görə 5v5 taktika
 
-Bir GK və dörd meydan oyunçusu. Bu, şərti qaydalar + istəyə bağlı LLM menyu seçimidir; yenidən təlim edilmiş çempion neyron şəbəkəsi deyil.
+Yeni variant əvvəlcədən yazılan yekun qəbul şərtini keçdi; əsas profilə seçildi.
 
-Native rəqibə qarşı bu yekun dəstdə qələbə sayı artmadı. Daha yüksək qələbə faizi əldə etdiyimizi iddia etmirik.
+Əsas profil: `phase_tactics: attack`. Yeni seçilmiş variant: `t_attack`. Tam nəticələr `reports/phase-v5/NETICELER_AZ.md`, taktika və mənbələr `TAKTIKA_AZ.md` daxilindədir.
 
-Yekun oyunlarda zəifləmə aşkarlandığı üçün əsas təqdimat profilində əvvəlki V3 hücum davranışı saxlandı (`formation: original`, 1–1–2-yə yaxın mobil quruluş). 2–1–1 ayrıca eksperimental profildə saxlanıb. Bu, testdən sonra parametr sazlaması deyil, zəif namizədin geri qaytarılmasıdır. Yeni versiyanı qələbə artımı kimi təqdim etmirik.
+`profiles/phase-*.json` yerli profillərdir. `profiles/aws-experimental-phase.json` yeni taktikanın canlı AWS-də yoxlanmamış namizədidir. Əsas settings AWS profilidir; yerli profillə eyni sayılmamalıdır.
 
-Yerli matç nəticələri və bütün məhdudiyyətlər `reports/NETICELER_AZ.md` içindədir. AWS profili və beş yerli runtime paketi hazırlanıb, canlı AWS-də yoxlanmayıb.
-
-`profiles/agentpitch-validated.json`: əsas yerli profil. `profiles/agentpitch-experimental-2-1-1.json`: doğrulama qalibi, eksperimental. `profiles/aws-candidate.json`: uyğunlaşdırılmalı bulud namizədi. Əsas settings AWS namizədidir.
-
-Sınaqlar: `python -m unittest discover -s tests` (paket qovluğundan). Yerli qurma: `python tools/build_agents.py`. Bu əmrlər deploy etmir.
+Paket qovluğundan: `python -m unittest discover -s tests`; `python tools/build_agents.py`. Sonuncu əmr deploy etmir.

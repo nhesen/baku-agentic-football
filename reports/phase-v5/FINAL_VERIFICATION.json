@@ -1,0 +1,26 @@
+{
+  "controlled_matches": 216,
+  "tests_passed": 67,
+  "skipped_tests": 0,
+  "candidate_source_preserved": true,
+  "five_runtime_sources_and_settings_verified": true,
+  "profile_fingerprints": {
+    "agentpitch-experimental-2-1-1.json": "82c1d083e94a870d",
+    "agentpitch-validated.json": "f3522a2a0850b428",
+    "aws-candidate.json": "f7a6876f550ecb51",
+    "aws-experimental-phase.json": "f7a6876f550ecb51",
+    "phase-attack.json": "f3522a2a0850b428",
+    "phase-compact.json": "bc67dbdf75b08640",
+    "phase-complete.json": "7e8de438f68d4d55",
+    "phase-high.json": "5de531a4e112c573",
+    "phase-off.json": "154955ac7b85d65f",
+    "phase-pivot.json": "124446226e15c05b",
+    "phase-trigger.json": "517dba340efd214d",
+    "phase-wide.json": "6868a992f3978acc"
+  },
+  "code_unchanged_between_development_validation_final": true,
+  "archive_crc_verified": true,
+  "source_zip_sha256": "f17955f2ed4e6b55100add6fa7990dc99c531cdde56842d722a7872ee411f50c",
+  "aws_deployed": false,
+  "live_model_matches": 0
+}

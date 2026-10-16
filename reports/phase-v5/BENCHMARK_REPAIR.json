@@ -1,0 +1,351 @@
+{
+  "reason": "Native baseline KeyError on removed holder team_b_1 at tick 1183. Only a stale reference in the baseline callback snapshot is cleared; engine state, physics and strategy source are unchanged. Both variants and sides at seed 906 were repeated.",
+  "initial_completed_attempts": 216,
+  "paired_repeat_attempts": 4,
+  "canonical_matches": 216,
+  "comparisons": [
+    {
+      "match_id": "phase_final_t_off_vs_baseline_s906_team_a",
+      "initial_opponent_errors": 0,
+      "repeat_opponent_errors": 0,
+      "identical_native_events": true,
+      "original_score": [
+        0,
+        0
+      ],
+      "repeat_score": [
+        0,
+        0
+      ]
+    },
+    {
+      "match_id": "phase_final_t_off_vs_baseline_s906_team_b",
+      "initial_opponent_errors": 0,
+      "repeat_opponent_errors": 0,
+      "identical_native_events": true,
+      "original_score": [
+        0,
+        0
+      ],
+      "repeat_score": [
+        0,
+        0
+      ]
+    },
+    {
+      "match_id": "phase_final_t_attack_vs_baseline_s906_team_a",
+      "initial_opponent_errors": 0,
+      "repeat_opponent_errors": 0,
+      "identical_native_events": true,
+      "original_score": [
+        0,
+        0
+      ],
+      "repeat_score": [
+        0,
+        0
+      ]
+    },
+    {
+      "match_id": "phase_final_t_attack_vs_baseline_s906_team_b",
+      "initial_opponent_errors": 85,
+      "repeat_opponent_errors": 0,
+      "identical_native_events": false,
+      "original_score": [
+        0,
+        0
+      ],
+      "repeat_score": [
+        0,
+        0
+      ]
+    }
+  ],
+  "initial_rows": [
+    {
+      "match_id": "phase_final_t_off_vs_baseline_s906_team_a",
+      "split": "phase_final",
+      "seed": 906,
+      "variant": "t_off",
+      "opponent": "baseline",
+      "side": "team_a",
+      "gf": 0,
+      "ga": 0,
+      "result": "D",
+      "callbacks": 11400,
+      "errors": 0,
+      "opponent_errors": 0,
+      "engine_fallbacks": 0,
+      "adapter_revision": "r2-stale-holder-guard",
+      "pass_samples": 50,
+      "counts": {
+        "result_ok": 5694,
+        "result_failed": 1,
+        "result_no_op_settled": 1,
+        "result_controlled": 3,
+        "shots": 7,
+        "result_no_op_carrier_changed": 1
+      },
+      "log_dir": "work\\v5-r2-final-baseline\\matches\\match_phase_final_t_off_vs_baseline_s906_team_a",
+      "tactical_counts": {},
+      "seconds": 5.603,
+      "policy_versions": {
+        "t_off": "154955ac7b85d65f"
+      },
+      "effective_settings": {
+        "t_off": {
+          "model_id": "amazon.nova-micro-v1:0",
+          "region": "us-east-1",
+          "model_budget_ms": 320,
+          "connect_timeout_s": 0.2,
+          "read_timeout_s": 0.35,
+          "pitch_half_length": 50,
+          "pitch_half_width": 30,
+          "goal_half_width": 3.66,
+          "shot_max_distance": 30.0,
+          "holder_max_distance": 4.0,
+          "holder_separation": 1.0,
+          "match_seconds": 0,
+          "profile": "balanced",
+          "pass_type": "GROUND",
+          "use_llm": false,
+          "advanced_commands": true,
+          "use_pass_model": false,
+          "pass_model_weight": 8.0,
+          "experimental_tactics": false,
+          "offside_control": true,
+          "scheme": "flow",
+          "track_transitions": true,
+          "early_shot": true,
+          "release_anchor": true,
+          "minimal_passing": false,
+          "prefer_center": false,
+          "phase_tactics": "off",
+          "formation": "original"
+        }
+      },
+      "last_active_tick": 1199,
+      "scheduled_ticks": 1200,
+      "evidence_stage": "v5-r2-final-baseline"
+    },
+    {
+      "match_id": "phase_final_t_off_vs_baseline_s906_team_b",
+      "split": "phase_final",
+      "seed": 906,
+      "variant": "t_off",
+      "opponent": "baseline",
+      "side": "team_b",
+      "gf": 0,
+      "ga": 0,
+      "result": "D",
+      "callbacks": 11400,
+      "errors": 0,
+      "opponent_errors": 0,
+      "engine_fallbacks": 0,
+      "adapter_revision": "r2-stale-holder-guard",
+      "pass_samples": 44,
+      "counts": {
+        "result_ok": 5690,
+        "result_no_op_settled": 3,
+        "result_blocked": 1,
+        "result_no_op_carrier_changed": 1,
+        "result_out_of_range": 2,
+        "shots": 4,
+        "result_controlled": 2,
+        "result_foul": 1
+      },
+      "log_dir": "work\\v5-r2-final-baseline\\matches\\match_phase_final_t_off_vs_baseline_s906_team_b",
+      "tactical_counts": {},
+      "seconds": 5.565,
+      "policy_versions": {
+        "t_off": "154955ac7b85d65f"
+      },
+      "effective_settings": {
+        "t_off": {
+          "model_id": "amazon.nova-micro-v1:0",
+          "region": "us-east-1",
+          "model_budget_ms": 320,
+          "connect_timeout_s": 0.2,
+          "read_timeout_s": 0.35,
+          "pitch_half_length": 50,
+          "pitch_half_width": 30,
+          "goal_half_width": 3.66,
+          "shot_max_distance": 30.0,
+          "holder_max_distance": 4.0,
+          "holder_separation": 1.0,
+          "match_seconds": 0,
+          "profile": "balanced",
+          "pass_type": "GROUND",
+          "use_llm": false,
+          "advanced_commands": true,
+          "use_pass_model": false,
+          "pass_model_weight": 8.0,
+          "experimental_tactics": false,
+          "offside_control": true,
+          "scheme": "flow",
+          "track_transitions": true,
+          "early_shot": true,
+          "release_anchor": true,
+          "minimal_passing": false,
+          "prefer_center": false,
+          "phase_tactics": "off",
+          "formation": "original"
+        }
+      },
+      "last_active_tick": 1199,
+      "scheduled_ticks": 1200,
+      "evidence_stage": "v5-r2-final-baseline"
+    },
+    {
+      "match_id": "phase_final_t_attack_vs_baseline_s906_team_a",
+      "split": "phase_final",
+      "seed": 906,
+      "variant": "t_attack",
+      "opponent": "baseline",
+      "side": "team_a",
+      "gf": 0,
+      "ga": 0,
+      "result": "D",
+      "callbacks": 11400,
+      "errors": 0,
+      "opponent_errors": 0,
+      "engine_fallbacks": 0,
+      "adapter_revision": "r2-stale-holder-guard",
+      "pass_samples": 43,
+      "counts": {
+        "result_ok": 5695,
+        "result_no_op_settled": 1,
+        "result_blocked": 1,
+        "result_no_op_carrier_changed": 1,
+        "shots": 5,
+        "result_failed": 1,
+        "result_out_of_range": 1
+      },
+      "log_dir": "work\\v5-r2-final-baseline\\matches\\match_phase_final_t_attack_vs_baseline_s906_team_a",
+      "tactical_counts": {
+        "t_attack:phase:restart": 125,
+        "t_attack:phase:progression": 1220,
+        "t_attack:phase:loose_ball": 1435,
+        "t_attack:phase:mid_block": 675,
+        "t_attack:phase:counter_attack": 1830,
+        "t_attack:phase:final_third": 370,
+        "t_attack:phase:build_up": 45
+      },
+      "seconds": 6.199,
+      "policy_versions": {
+        "t_attack": "f3522a2a0850b428"
+      },
+      "effective_settings": {
+        "t_attack": {
+          "model_id": "amazon.nova-micro-v1:0",
+          "region": "us-east-1",
+          "model_budget_ms": 320,
+          "connect_timeout_s": 0.2,
+          "read_timeout_s": 0.35,
+          "pitch_half_length": 50,
+          "pitch_half_width": 30,
+          "goal_half_width": 3.66,
+          "shot_max_distance": 30.0,
+          "holder_max_distance": 4.0,
+          "holder_separation": 1.0,
+          "match_seconds": 0,
+          "profile": "balanced",
+          "pass_type": "GROUND",
+          "use_llm": false,
+          "advanced_commands": true,
+          "use_pass_model": false,
+          "pass_model_weight": 8.0,
+          "experimental_tactics": false,
+          "offside_control": true,
+          "scheme": "flow",
+          "track_transitions": true,
+          "early_shot": true,
+          "release_anchor": true,
+          "minimal_passing": false,
+          "prefer_center": false,
+          "phase_tactics": "attack",
+          "formation": "original"
+        }
+      },
+      "last_active_tick": 1199,
+      "scheduled_ticks": 1200,
+      "evidence_stage": "v5-r2-final-baseline"
+    },
+    {
+      "match_id": "phase_final_t_attack_vs_baseline_s906_team_b",
+      "split": "phase_final",
+      "seed": 906,
+      "variant": "t_attack",
+      "opponent": "baseline",
+      "side": "team_b",
+      "gf": 0,
+      "ga": 0,
+      "result": "D",
+      "callbacks": 11027,
+      "errors": 0,
+      "opponent_errors": 85,
+      "engine_fallbacks": 0,
+      "adapter_revision": "r2-stale-holder-guard",
+      "pass_samples": 43,
+      "counts": {
+        "result_ok": 5401,
+        "result_no_op_settled": 1,
+        "result_blocked": 2,
+        "result_no_op_carrier_changed": 2,
+        "shots": 7,
+        "result_failed": 3,
+        "result_out_of_range": 2,
+        "result_foul": 1
+      },
+      "log_dir": "work\\v5-r2-final-baseline\\matches\\match_phase_final_t_attack_vs_baseline_s906_team_b",
+      "tactical_counts": {
+        "t_attack:phase:restart": 211,
+        "t_attack:phase:loose_ball": 1535,
+        "t_attack:phase:mid_block": 890,
+        "t_attack:phase:counter_attack": 979,
+        "t_attack:phase:progression": 1146,
+        "t_attack:phase:final_third": 583,
+        "t_attack:phase:uncertain_recover": 68
+      },
+      "seconds": 5.639,
+      "policy_versions": {
+        "t_attack": "f3522a2a0850b428"
+      },
+      "effective_settings": {
+        "t_attack": {
+          "model_id": "amazon.nova-micro-v1:0",
+          "region": "us-east-1",
+          "model_budget_ms": 320,
+          "connect_timeout_s": 0.2,
+          "read_timeout_s": 0.35,
+          "pitch_half_length": 50,
+          "pitch_half_width": 30,
+          "goal_half_width": 3.66,
+          "shot_max_distance": 30.0,
+          "holder_max_distance": 4.0,
+          "holder_separation": 1.0,
+          "match_seconds": 0,
+          "profile": "balanced",
+          "pass_type": "GROUND",
+          "use_llm": false,
+          "advanced_commands": true,
+          "use_pass_model": false,
+          "pass_model_weight": 8.0,
+          "experimental_tactics": false,
+          "offside_control": true,
+          "scheme": "flow",
+          "track_transitions": true,
+          "early_shot": true,
+          "release_anchor": true,
+          "minimal_passing": false,
+          "prefer_center": false,
+          "phase_tactics": "attack",
+          "formation": "original"
+        }
+      },
+      "last_active_tick": 1199,
+      "scheduled_ticks": 1200,
+      "evidence_stage": "v5-r2-final-baseline"
+    }
+  ]
+}

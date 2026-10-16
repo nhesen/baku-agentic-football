@@ -1,29 +1,45 @@
-# Baku Agentic Football — 5v5
+# Baku Agentic Football — 5v5 faza taktikaları
 
-Bir qapıçı və dörd meydan oyunçusundan ibarət AWS futbol komandası. Tövsiyə edilən versiya V4 paketində saxlanılmış əvvəlki V3 davranışıdır: `formation: original`, 1–1–2-yə yaxın mobil quruluş. Səkkiz yeni düzülüşün sınağı ayrıca sənədləşdirilib.
+Bir qapıçı və dörd meydan oyunçusu. Hücum, müdafiə və topa sahiblik keçidləri üçün ayrı qərar qaydaları. V5 taktika genişləndirməsi və onun ölçülmüş nəticələri bu repozitoriyadadır.
 
-Bu sistem mövqe, topa sahiblik, ötürmə, zərbə və müdafiə qaydalarını istəyə bağlı LLM seçimləri ilə birləşdirir. Kaggle çempionunun çəkiləri bu sistemə köçürülməyib.
+Yekun qəbul şərtini keçən yeni profil əsas seçimdir.
 
-## Ölçülmüş nəticə
+## Yeni davranışlar
 
-276 tam yerli AgentPitch matçı keçirilib: 4 nəzarət yoxlaması, 144 ilkin seçim, 48 doğrulama və 80 yekun matç. Hər komandada cəmi **5 oyunçu** var.
+- Geridən çıxışda 1–2–1, irəliləyişdə 1–1–2; ayrı kanallar və fərqli dərinlikli qaçışlar.
+- Topun arxasını sığortalayan oyunçunun rola görə dəyişməsi.
+- Hücumda genişlik variantı, son zonada uzaq cinahın daralması və açıq ötürmə xəttinə dəstək.
+- Top rəqibdə olanda yığcam blok, top tərəfə sürüşmə və təhlükəli oyunçunun qapı tərəfdən tutulması.
+- Cinah/məsafə/örtük şərtləri ilə press; yaxınlaşma ilə birbaşa topa müdaxilə ayrı əmrlərdir.
+- Yerli dəstək varsa qısa əks-press, top qazanıldıqda hücuma sürətli keçid.
+- Hesab, məlum qalan vaxt, stamina, aktiv oyunçu sayı və ofsayd həddi ilə riskin idarəsi.
 
-Eyni native rəqibə qarşı ayrıca yekun sınaq:
+Bunlar qaydalarla qurulmuş taktikalardır. Bütün xüsusiyyətlərin birlikdə faydalı olduğu iddia edilmir; ayrıca variantlar sınaqdan keçirilib. [Qaydalar və FIFA mənbələri](TAKTIKA_AZ.md).
 
-| Davranış | Oyun | Qələbə | Heç-heçə | Məğlubiyyət | Qollar |
+## Nəticələr
+
+216 tam nəzarətli yerli matç: 4 nəzarət yoxlaması, 96 ilkin seçim, 36 doğrulama və 80 yekun oyun. İlkin inteqrasiya pilotu bu saydan ayrıdır.
+
+Yekun dəstdə seçilmiş yeni variant: **t_attack**. Tövsiyə edilən əsas parametr: **`phase_tactics: attack`**.
+
+| Variant / rəqib | Oyun | Q | H | M | Qollar |
 |---|---:|---:|---:|---:|---:|
-| Saxlanılmış əvvəlki versiya | 20 | 4 | 15 | 1 | 5:1 |
-| Eksperimental 2–1–1 | 20 | 0 | 20 | 0 | 0:0 |
+| t_off / baseline | 20 | 2 | 16 | 2 | 3:2 |
+| t_attack / baseline | 20 | 4 | 13 | 3 | 4:3 |
+| t_off / reference3 | 20 | 4 | 12 | 4 | 5:5 |
+| t_attack / reference3 | 20 | 7 | 10 | 3 | 11:3 |
 
-Yeni variantın qələbə faizini artırdığı təsdiqlənmədiyi üçün əsas seçim dəyişdirilmədi. Bu 20%-lik nəticə yalnız həmin yerli oyun dəstinə aiddir; AWS yarışında qələbə ehtimalı deyil. Əvvəlki 5%-lik nəticə ilə fərqli toxumlarda alınmış eyni davranış müqayisə olunur, model yaxşılaşması kimi təqdim edilmir.
+Bu faizlər yerli AgentPitch rəqiblərinə aiddir. Canlı AWS/LLM matçlarında yoxlanmayıb; AWS çempionlarının agentləri rəqib kimi istifadə edilməyib.
 
-- [Tam nəticələr və səhvlərin təhlili](reports/NETICELER_AZ.md)
-- [YouTube, Kaggle, Reddit, X və futzal mənbələrinin araşdırması](reports/ARASDIRMA_AZ.md)
-- [276 matçın nəticəsi](reports/ALL_MATCHES.csv)
-- [Saxlanılan versiyanın ilk yekun matçı: 1:0](reports/replay-recommended-first.html)
-- [Yekun doğrulama qeydi](reports/FINAL_VERIFICATION.json)
+İki rəqib üzrə qələbələr 6/40-dan 11/40-a yüksəlib. Cüt toxumlar üzrə fərqin bootstrap 95% intervalı −5 ilə +30 faiz bəndidir: nəticə ümidvericidir, lakin statistik qeyri-müəyyənlik genişdir. Native rəqibin bir snapshot xətası üçün hər iki versiya və tərəf təkrar yoxlanıb; [audit qeydi](reports/phase-v5/BENCHMARK_REPAIR.json) saxlanıb.
 
-Təkrarları endirib brauzerdə açmaq olar. Qələbə ilə yanaşı ilk eksperimental heç-heçə və məğlubiyyət də `reports/` daxilində saxlanıb. 94 MB-lıq xam matç arxivi repozitoriyaya daxil edilməyib. Tarixi hesabatlardakı workspace runner yolları yerli təcrübə mühitinə aiddir; bu repo tam matç laboratoriyasını deyil, tövsiyə edilən agentləri, testləri və nəticə sübutlarını saxlayır. `reports/original-package-snapshot.json` orijinal tam yerli paketin inventarıdır; Git checkout inventarı deyil.
+- [Tam V5 nəticələri və təhlil](reports/phase-v5/NETICELER_AZ.md)
+- [216 matçın cədvəli](reports/phase-v5/ALL_MATCHES.csv)
+- [Faktiki mövqelənmə və hücum göstəriciləri](reports/phase-v5/DIAGNOSTICS.json)
+- [İlk yekun matçın təkrarı](reports/phase-v5/replay-first.html)
+- [Əvvəlki V4 hesabatı](reports/NETICELER_AZ.md)
+
+Təkrarları endirib brauzerdə açın. Xam ZIP matç arxivləri yerli outputs qovluğunda saxlanır.
 
 ## Başlamaq
 
@@ -36,23 +52,16 @@ python -m venv .venv
 python -m pip install -r requirements-runtime.txt
 python -m pip install httpx
 python -m unittest discover -s tests
-```
-
-Yüklənən mənbədə 57 test keçib. SDK asılılıqları yoxdursa, SDK testləri ötürülür. Testlər real AWS/Bedrock sorğusu göndərmir.
-
-Beş oyunçu üçün offline nümunə qərar:
-
-```sh
 python -m baku_fc.cli fixtures/new-home.json --all
 ```
 
-Bu əmr offline qərar yoxlamasıdır, futbol matçı deyil.
+**67 test keçirilib, ötürülmüş test yoxdur.** Testlər real AWS sorğusu göndərmir. Son əmr beş oyunçunun offline qərar yoxlamasıdır, tam futbol matçı deyil.
 
-## Profillər və beş runtime
+## Profillər
 
-- `profiles/agentpitch-validated.json`: yerli 100×60 meydan üçün ölçülmüş, LLM-siz profil. Kod+konfiqurasiya izi: `20fb44b0a4e059c3`.
-- `profiles/aws-candidate.json`: AWS üçün 110×70 meydan fərziyyəsi ilə hazırlanmış, LLM aktiv namizəd. **Canlı AWS matçında yoxlanmayıb.** Əsas `baku_fc/settings.json` bu profilə uyğundur.
-- `profiles/agentpitch-experimental-2-1-1.json`: tövsiyə edilməyən müqayisə profili.
+`profiles/phase-*.json` yerli 100×60 meydan üçün seçimlərdir: `off`, `attack`, `compact`, `trigger`, `high`, `complete`, `wide`, `pivot`. `phase_tactics` parametrini profilə görə dəyişin. Əsas yerli profil `profiles/agentpitch-validated.json`; mənbə+konfiqurasiya izi `f3522a2a0850b428`.
+
+`profiles/aws-candidate.json` və əsas settings 110×70 meydan fərziyyəsi ilə AWS namizədidir. `profiles/aws-experimental-phase.json` seçilmiş yeni taktikanın AWS namizədidir. Canlı yarışın payload-u, ölçüləri, əmrləri və gecikməsi ayrıca uyğunlaşdırılmalıdır.
 
 Beş runtime mənbəyini yerli qurmaq:
 
@@ -60,8 +69,8 @@ Beş runtime mənbəyini yerli qurmaq:
 python tools/build_agents.py
 ```
 
-Bu əmr AWS-ə deploy etmir. Nəticə `deployment/build/` daxilində yaranır və Git-ə daxil edilmir. Quraşdırmadan sonra `deployment/build/DEPLOY.txt` və [AWS şablonunun mənşə qeydi](deployment/template/PROVENANCE.md) ilə işləyin. Rəsmi yarışın payload-u, əmr formatı, meydan ölçüləri və gecikmə həddi canlı mühitdə ayrıca təsdiqlənməlidir.
+Bu əmr deploy etmir. `deployment/build/DEPLOY.txt` və [şablonun mənşə qeydi](deployment/template/PROVENANCE.md) sonrakı quraşdırmanı izah edir. Quraşdırılmış fayllar Git-ə daxil edilmir.
 
-## Mənbə və lisenziya
+## Mənbələr
 
-Öz kodumuz və saxlanılan AWS şablonu üçün MIT-0 bildirişləri qorunub. Təkrarların AgentPitch görüntüləyicisi Apache-2.0 lisenziyalıdır; [üçüncü tərəf bildirişləri](third_party/README.md) saxlanıb. [Mənbə siyahısı](SOURCES.json), [lisenziya](LICENSE.txt) və [araşdırma qeydləri](STRATEGIYA_REFERANSLARI_AZ.md) repozitoriyadadır. Raw Beast-in lisenziyası qeyri-müəyyən faylları və üçüncü tərəf model çəkiləri daxil edilməyib.
+Öz kodu və AWS şablonu MIT-0; təkrarların AgentPitch görüntüləyicisi Apache-2.0-dır. [Mənbələr](SOURCES.json), [üçüncü tərəf bildirişləri](third_party/README.md), [lisenziya](LICENSE.txt). Üçüncü tərəf Kaggle çəkiləri daxil edilməyib.

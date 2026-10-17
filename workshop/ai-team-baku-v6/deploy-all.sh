@@ -69,7 +69,7 @@ for agent in "${AGENTS[@]}"; do
 
   echo
   echo "Deploying $agent..."
-  if (cd "$STAGE" && agentcore deploy --auto-update-on-conflict); then
+  if (cd "$STAGE" && agentcore deploy --yes); then
     DEPLOYED+=("$agent")
   else
     FAILED+=("$agent")

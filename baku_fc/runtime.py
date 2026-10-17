@@ -22,23 +22,27 @@ class StrandsInference:
             max_tokens=16,
         )
         # Bedrock GPT-5.6 Converse rejects the temperature field entirely.
-        # Nova accepts it, so retain the deterministic setting for older/local
-        # profiles while keeping the workshop's GPT-5.6 request valid.
+        # Claude accepts zero temperature, which keeps the menu selection
+        # deterministic across the five independent player runtimes.
         if ".openai.gpt-5.6-" not in cfg.model_id:
-            model_kwargs["temperature"] = 0.1
+            model_kwargs["temperature"] = 0.0
         self.model = BedrockModel(**model_kwargs)
-        self._direct_converse = ".openai.gpt-5.6-" in cfg.model_id
+        self._direct_converse = (".openai.gpt-5.6-" in cfg.model_id or
+                                 ".anthropic.claude-" in cfg.model_id)
 
     def __call__(self, system, user):
         if self._direct_converse:
             # The football response is a tiny {"choice":N} object. Calling
             # Converse directly avoids constructing a full Strands Agent and
             # processing its event stream on every sub-500 ms match tick.
+            inference_config = {"maxTokens": 16}
+            if ".openai.gpt-5.6-" not in self.model.config["model_id"]:
+                inference_config["temperature"] = 0.0
             response = self.model.client.converse(
                 modelId=self.model.config["model_id"],
                 system=[{"text": system}],
                 messages=[{"role": "user", "content": [{"text": user}]}],
-                inferenceConfig={"maxTokens": 16},
+                inferenceConfig=inference_config,
             )
             blocks = response.get("output", {}).get("message", {}).get("content", [])
             return "".join(block.get("text", "") for block in blocks if isinstance(block, dict))

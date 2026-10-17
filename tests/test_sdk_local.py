@@ -49,13 +49,13 @@ class LocalSDKSmoke(unittest.IsolatedAsyncioTestCase):
         workshop_settings = Path(__file__).resolve().parents[1] / "workshop" / "ai-team-baku-v6" / "settings.workshop.json"
         with patch.dict(os.environ, OFFLINE_ENV, clear=True):
             provider = StrandsInference(load_settings(workshop_settings))
-            self.assertEqual(provider.model.config.get("model_id"), "us.openai.gpt-5.6-luna")
+            self.assertEqual(provider.model.config.get("model_id"), "us.anthropic.claude-haiku-4-5-20251001-v1:0")
             self.assertEqual(provider.model.config.get("max_tokens"), 16)
-            self.assertNotIn("temperature", provider.model.config)
+            self.assertEqual(provider.model.config.get("temperature"), 0.0)
             self.assertEqual(provider.model.client.meta.region_name, "us-east-1")
             self.assertEqual(provider.model.client.meta.config.retries["total_max_attempts"], 1)
 
-    async def test_gpt_pipeline_parses_a_stubbed_bedrock_converse_response(self):
+    async def test_claude_pipeline_parses_a_stubbed_bedrock_converse_response(self):
         from baku_fc.runtime import StrandsInference
         from baku_fc.config import load_settings
         from baku_fc.commands import decode
@@ -67,7 +67,8 @@ class LocalSDKSmoke(unittest.IsolatedAsyncioTestCase):
                 result = provider('Choose one option. Return only {"choice":0}.', '{"CANDIDATES":[{}]}')
                 self.assertEqual(decode(result), {"choice": 0})
                 self.assertEqual(method.call_count, 1)
-                self.assertEqual(method.call_args.kwargs["inferenceConfig"], {"maxTokens": 16})
+                self.assertEqual(method.call_args.kwargs["inferenceConfig"],
+                                 {"maxTokens": 16, "temperature": 0.0})
 
 
 if __name__ == "__main__":

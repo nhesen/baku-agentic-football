@@ -23,13 +23,13 @@ class WorkshopBundleTests(unittest.TestCase):
         self.assertIn('cp -R "$REPO_ROOT/baku_fc" "$STAGE/src/baku_fc"', script)
         self.assertIn('cp "$SCRIPT_DIR/settings.workshop.json" "$STAGE/src/baku_fc/settings.json"', script)
 
-    def test_gpt_56_luna_is_the_deployed_model(self):
+    def test_claude_haiku_45_is_the_deployed_model(self):
         raw = json.loads((WORKSHOP / "settings.workshop.json").read_text(encoding="utf-8"))
-        self.assertEqual(raw["model_id"], "us.openai.gpt-5.6-luna")
-        self.assertEqual(raw["model_budget_ms"], 375)
+        self.assertEqual(raw["model_id"], "us.anthropic.claude-haiku-4-5-20251001-v1:0")
+        self.assertEqual(raw["model_budget_ms"], 450)
         self.assertLess(raw["model_budget_ms"], 500)
         self.assertEqual(load_settings(WORKSHOP / "settings.workshop.json").model_id,
-                         "us.openai.gpt-5.6-luna")
+                         "us.anthropic.claude-haiku-4-5-20251001-v1:0")
 
 
 if __name__ == "__main__":

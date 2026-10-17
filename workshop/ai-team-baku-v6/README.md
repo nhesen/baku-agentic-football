@@ -18,10 +18,16 @@ runtime. Nothing in the five thin entrypoints duplicates or replaces the GitHub
 tactics: they select player IDs 0-4 and call `baku_fc.runtime.create_app()`.
 
 The deployment-specific model is the AWS US cross-region inference profile
-`us.openai.gpt-5.6-luna`. Luna is the low-latency GPT-5.6 variant and supports
-the Bedrock Converse API used by Strands. The model can only select from the
-legal tactical candidates produced by the V6 engine; the validated deterministic
-V6 fallback remains active when inference is slow or unavailable.
+`us.anthropic.claude-haiku-4-5-20251001-v1:0`. The runtime calls Bedrock
+Converse directly so a new Strands agent is not constructed on every match
+tick. The model can only select from the legal tactical candidates produced by
+the V6 engine; the validated deterministic V6 fallback remains active when
+inference is slow or unavailable.
+
+The portal formation label should be set to `1-1-2`. The deployed `original`
+mobile shape is the measured attacking shape closest to 1-1-2; the separate
+2-1-1 experiment produced fewer shots and no wins against the native baseline
+in its untouched final set, so it is not used for the tournament runtime.
 
 Register the resulting runtime ARNs in this order:
 

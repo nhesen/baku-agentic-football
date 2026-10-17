@@ -1,0 +1,43 @@
+{
+  "control": "e_off",
+  "frozen_control": "reference6",
+  "variants": [
+    "e_off",
+    "e_shot",
+    "e_cutback",
+    "e_cover",
+    "e_balanced"
+  ],
+  "opponents": [
+    "baseline",
+    "reference6"
+  ],
+  "development_seeds": [
+    1301,
+    1302
+  ],
+  "validation_seeds": [
+    1311,
+    1312
+  ],
+  "final_seeds": [
+    1401,
+    1402,
+    1403,
+    1404,
+    1405,
+    1406,
+    1407,
+    1408,
+    1409,
+    1410
+  ],
+  "development_advance": "Top two new: wins, goal difference, goals scored, name.",
+  "validation_selection": "Top new by same rule. No changes after source freeze.",
+  "promotion": "Pooled final wins increase; baseline wins/points do not fall; pooled goal difference does not fall. Otherwise V7 retains V6 behavior by default and new tactics remain optional.",
+  "model": "Optional retention integration unit checked; use_pass_model remains false in every performance experiment.",
+  "shot_filter": "minimum lane: 1.0m through 13m, 1.8m through 22m, 2.5m beyond; range remains 30m. Heuristic, not xG.",
+  "cover": "1.5s maximum after observed opponent control, moving loose/unknown ball, no restart; never grants possession.",
+  "geometry": "Unchanged native engine, 100x60, 1200 ticks, GK+four outfield, both sides.",
+  "clock_guard": "No new timed cover if gameTime is absent/zero; w.time>0 required. Pilot excludes previous clock-unguarded source."
+}

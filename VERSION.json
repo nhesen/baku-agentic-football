@@ -1,10 +1,12 @@
 {
-  "label": "Baku FC V6 coaching experiments",
-  "selected": "c_give_go",
-  "promoted": true,
+  "label": "Baku FC V7",
+  "version": "7.0.0",
+  "selected": "e_cutback",
+  "promoted": false,
   "phase_tactics": "attack",
   "combination_tactics": "give_go",
-  "native_fingerprint": "72487b5cac201020",
-  "aws_candidate_fingerprint": "c42fb85e84e47400",
+  "finishing_tactics": "off",
+  "native_fingerprint": "7d83678780179e5c",
+  "aws_candidate_fingerprint": "d5194fee4bfafbc8",
   "aws_live_tested": false
 }

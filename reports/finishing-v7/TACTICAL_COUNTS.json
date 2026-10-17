@@ -1,0 +1,64 @@
+{
+  "e_balanced": {
+    "e_balanced:phase:restart": 1440,
+    "e_balanced:combination:give_go": 45150,
+    "e_balanced:finishing:balanced": 45150,
+    "e_balanced:phase:progression": 6930,
+    "e_balanced:pass_and_move": 10265,
+    "e_balanced:phase:loose_ball": 9930,
+    "e_balanced:phase:mid_block": 10080,
+    "e_balanced:opponent_release_cover": 5610,
+    "e_balanced:phase:counter_attack": 13785,
+    "e_balanced:phase:final_third": 2880,
+    "e_balanced:phase:build_up": 105
+  },
+  "e_cover": {
+    "e_cover:phase:restart": 1445,
+    "e_cover:combination:give_go": 45150,
+    "e_cover:finishing:cover": 45150,
+    "e_cover:phase:progression": 6875,
+    "e_cover:pass_and_move": 9350,
+    "e_cover:phase:loose_ball": 11025,
+    "e_cover:phase:mid_block": 10450,
+    "e_cover:opponent_release_cover": 6385,
+    "e_cover:phase:counter_attack": 13730,
+    "e_cover:phase:final_third": 1515,
+    "e_cover:phase:build_up": 110
+  },
+  "e_cutback": {
+    "e_cutback:phase:restart": 6855,
+    "e_cutback:combination:give_go": 312967,
+    "e_cutback:finishing:cutback": 312967,
+    "e_cutback:phase:progression": 49843,
+    "e_cutback:pass_and_move": 72448,
+    "e_cutback:phase:loose_ball": 70497,
+    "e_cutback:phase:mid_block": 73141,
+    "e_cutback:phase:counter_attack": 96697,
+    "e_cutback:phase:final_third": 14175,
+    "e_cutback:phase:build_up": 1759
+  },
+  "e_off": {
+    "e_off:phase:restart": 7155,
+    "e_off:combination:give_go": 324367,
+    "e_off:finishing:off": 324367,
+    "e_off:phase:progression": 52568,
+    "e_off:pass_and_move": 75668,
+    "e_off:phase:loose_ball": 73452,
+    "e_off:phase:final_third": 14500,
+    "e_off:phase:mid_block": 74526,
+    "e_off:phase:counter_attack": 100407,
+    "e_off:phase:build_up": 1759
+  },
+  "e_shot": {
+    "e_shot:phase:restart": 1746,
+    "e_shot:combination:give_go": 89132,
+    "e_shot:finishing:shot": 89132,
+    "e_shot:phase:progression": 14668,
+    "e_shot:pass_and_move": 21943,
+    "e_shot:phase:loose_ball": 19546,
+    "e_shot:phase:mid_block": 20313,
+    "e_shot:phase:counter_attack": 26795,
+    "e_shot:phase:final_third": 5465,
+    "e_shot:phase:build_up": 599
+  }
+}

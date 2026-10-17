@@ -1,0 +1,18 @@
+{
+  "completed_matches": 148,
+  "tests_passed": 85,
+  "skipped": 0,
+  "source_unchanged": true,
+  "control_reproduces_v6_both_sides": true,
+  "five_runtime_builds_verified": true,
+  "profile_fingerprints": {
+    "finish-balanced.json": "fab7b9bfaeca3805",
+    "finish-cover.json": "e60c10e2f8cd99e1",
+    "finish-cutback.json": "a4c4f66e7e2c2f20",
+    "finish-off.json": "7d83678780179e5c",
+    "finish-shot.json": "1c5a44ee998fc861"
+  },
+  "archive_sha256": "6e3a4681207f8609a4f73aeafe139ac172dfe53f2c741b549bb11046b4670829",
+  "excluded_completed_pilot": 36,
+  "live_aws": false
+}

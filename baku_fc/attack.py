@@ -8,6 +8,7 @@ from .state import Point
 from .formations import support, anchor_id
 from .phase_coach import decision as phase_decision
 from .combinations import enhance
+from .learned import retention
 from .tactics import (Plan, clamp, command, move, stopped_phase, profile_for,
                       formation_target, onside_limit, segment_clearance, shot_facts)
 
@@ -80,7 +81,27 @@ def pass_menu(w,cfg):
         risk=max(0,3-lane)*2+max(0,4-room)+max(0,d-25)*.12
         value=attack_value(w,cfg,mate.pos)-attack_value(w,cfg,w.me.pos)-risk-2
         if mate.pid==0:value-=12
-        out.append(dict(pid=mate.pid,score=round(value,3),progress=progress,distance=d,clearance=lane,room=room))
+        cutback=False
+        if cfg.finishing_tactics in {"cutback", "balanced"}:
+            k=cfg.pitch_half_length/50
+            goal=Point(w.sign*cfg.pitch_half_length,0)
+            cutback=(mate.pid!=0 and w.me.pos.x*w.sign>cfg.pitch_half_length*.45
+                     and mate.pos.x*w.sign>cfg.pitch_half_length*.4
+                     and abs(w.me.pos.y)>8*k and abs(mate.pos.y)<abs(w.me.pos.y)-4*k
+                     and abs(mate.pos.y)<cfg.goal_half_width+8*k
+                     and -14*k<=progress<=2*k and d<=24*k and lane>=2*k and room>=3*k
+                     and mate.pos.distance(goal)+2*k<w.me.pos.distance(goal))
+            if cutback:value+=4.0
+        probability=None
+        if cfg.use_pass_model:
+            goal_gap=mate.pos.distance(Point(w.sign*cfg.pitch_half_length,0))
+            features=[d/(2*cfg.pitch_half_length),progress/(2*cfg.pitch_half_length),
+                      min(lane,10)/10,min(room,10)/10,goal_gap/(2*cfg.pitch_half_length),
+                      float(mate.pid==0),abs(mate.pos.y)/cfg.pitch_half_width]
+            probability=retention(features)
+            if probability is not None:value+=cfg.pass_model_weight*(probability-.5)
+        out.append(dict(pid=mate.pid,score=round(value,3),progress=progress,distance=d,clearance=lane,room=room,
+                        cutback=cutback,predicted_retention=probability))
     return sorted(out,key=lambda p:(-p['score'],p['pid']))
 
 
@@ -102,7 +123,9 @@ def presser_for(w,cfg):
 
 def cover(w,cfg,presser,target):
     # Two players protect distinct threats. The last forward remains an outlet.
-    if w.status!='OPP' or w.pid==4 or w.pid==presser:return target
+    recent_release=(cfg.finishing_tactics in {'cover','balanced'} and w.opponent_release_age is not None
+                    and w.status in {'LOOSE','UNKNOWN'} and not w.our_pass_in_flight)
+    if (w.status!='OPP' and not recent_release) or w.pid==4 or w.pid==presser:return target
     defenders=[p for p in w.mine if p.pid not in (0,4,presser)]
     threats=sorted([p for p in w.opponents if p.pid!=0],key=lambda p:p.pos.x*w.sign)
     assignments={}
@@ -157,7 +180,8 @@ def plan_five(w,cfg):
             if shoot and (cfg.early_shot or (direct and (w.pid==1 or shot['distance']<=30)) or shot['distance']<=14 or (shot['field_player_clearance']>=2.5 and nearest>6)):
                 candidates.append(shoot)
             # Don't repeatedly exchange safe passes instead of carrying freely.
-            valuable=[p for p in passes if p['score']>carry_value(advance)*.65 and p['progress']>3]
+            valuable=[p for p in passes if (p['score']>carry_value(advance)*.65 and p['progress']>3)
+                      or (p.get('cutback',False) and p['score']>1)]
             if nearest<4:
                 valuable=passes[:2]
             if cfg.minimal_passing:
@@ -197,6 +221,7 @@ def plan_five(w,cfg):
             candidates=([command(w,'PASS',{'target_player_id':p['pid'],'type':cfg.pass_type}) for p in passes[:2]]
                         if me.can_kick and (w.restart_player is None or w.restart_player==w.pid) else []) or [command(w,'SET_STANCE',{'stance':0})]
     tactical_facts={k:v for k,v in coach.items() if k!='targets'} if coach else {}
+    tactical_facts.update(finishing=cfg.finishing_tactics,opponent_release_age=w.opponent_release_age)
     facts=dict(tactical=tactical_facts,role=('goalkeeper','anchor','pivot','second_forward' if cfg.scheme=='pair' else 'right_support','striker')[w.pid],
                scheme=cfg.scheme,formation=cfg.formation,players_per_side=5,outfield_players=4,possession=w.status,team=w.team,player=w.pid,
                attack_direction=w.sign,designated_presser=presser,score_us_them=[w.us,w.them],remaining_seconds=w.remaining,

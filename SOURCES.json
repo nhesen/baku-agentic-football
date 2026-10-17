@@ -115,6 +115,11 @@
     {
       "name": "V6 English 5v5 coaching articles and empirical studies",
       "use": "RESEARCH_AZ.md lists all 15 sources, reading coverage, implementation and limits."
+    },
+    {
+      "name": "User-supplied V7 proposal, manually reviewed",
+      "sha256": "0a1ffa85b91414af6ae4c0b10de5755b63141892b2fa892e0464f69f7f815526",
+      "use": "Selective shot/cutback/cover ideas; not executed or copied as a drop-in patch. See PATCHES_AZ.md."
     }
   ]
 }

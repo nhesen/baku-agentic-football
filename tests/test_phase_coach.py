@@ -40,10 +40,11 @@ class PhaseCoachTests(unittest.TestCase):
         self.assertEqual(len({c['presser'] for c in choices}),1)
         self.assertTrue(all(c['targets']==choices[0]['targets'] for c in choices))
         self.assertNotEqual(choices[0]['presser'],0)
-    def test_off_is_exact_original_tactical_decision(self):
+    def test_off_disables_phase_targets_with_separate_finish_telemetry(self):
         w,_=self.world()
         cfg=Settings(scheme='flow',release_anchor=True,phase_tactics='off')
-        self.assertEqual(plan(w,cfg).facts['tactical'],{})
+        facts=plan(w,cfg).facts['tactical']
+        self.assertTrue({'phase','attack_active','defense_active','press_triggers'}.isdisjoint(facts))
     def test_width_and_depth_with_a_cover_player(self):
         w,_=self.world(x=-25)
         d=decision(w,Settings(phase_tactics='wide'))

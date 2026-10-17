@@ -1,0 +1,97 @@
+{
+  "stage": "validation",
+  "summaries": {
+    "e_cutback": {
+      "n": 8,
+      "W": 2,
+      "D": 2,
+      "L": 4,
+      "gf": 2,
+      "ga": 5,
+      "points": 8
+    },
+    "e_off": {
+      "n": 8,
+      "W": 2,
+      "D": 2,
+      "L": 4,
+      "gf": 2,
+      "ga": 5,
+      "points": 8
+    },
+    "e_shot": {
+      "n": 8,
+      "W": 1,
+      "D": 5,
+      "L": 2,
+      "gf": 2,
+      "ga": 2,
+      "points": 8
+    }
+  },
+  "new_variants_rank": [
+    "e_cutback",
+    "e_shot"
+  ],
+  "by_opponent": {
+    "baseline": {
+      "e_cutback": {
+        "n": 4,
+        "W": 0,
+        "D": 2,
+        "L": 2,
+        "gf": 0,
+        "ga": 3,
+        "points": 2
+      },
+      "e_off": {
+        "n": 4,
+        "W": 0,
+        "D": 2,
+        "L": 2,
+        "gf": 0,
+        "ga": 3,
+        "points": 2
+      },
+      "e_shot": {
+        "n": 4,
+        "W": 0,
+        "D": 4,
+        "L": 0,
+        "gf": 0,
+        "ga": 0,
+        "points": 4
+      }
+    },
+    "reference6": {
+      "e_cutback": {
+        "n": 4,
+        "W": 2,
+        "D": 0,
+        "L": 2,
+        "gf": 2,
+        "ga": 2,
+        "points": 6
+      },
+      "e_off": {
+        "n": 4,
+        "W": 2,
+        "D": 0,
+        "L": 2,
+        "gf": 2,
+        "ga": 2,
+        "points": 6
+      },
+      "e_shot": {
+        "n": 4,
+        "W": 1,
+        "D": 1,
+        "L": 2,
+        "gf": 2,
+        "ga": 2,
+        "points": 4
+      }
+    }
+  },
+  "selected": "e_cutback"
+}

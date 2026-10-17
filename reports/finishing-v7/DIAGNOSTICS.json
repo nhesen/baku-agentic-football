@@ -1,0 +1,128 @@
+{
+  "finish_dev": {
+    "e_balanced": {
+      "passes": 237,
+      "forward_passes": 94,
+      "back_passes": 98,
+      "possession_ticks": 3552,
+      "own_third_ticks": 455,
+      "final_third_ticks": 649,
+      "shots": 13,
+      "shots_slot_3": 3,
+      "shots_slot_4": 9,
+      "shots_slot_2": 1
+    },
+    "e_cover": {
+      "passes": 216,
+      "forward_passes": 96,
+      "back_passes": 81,
+      "possession_ticks": 3279,
+      "own_third_ticks": 506,
+      "final_third_ticks": 286,
+      "shots": 21,
+      "shots_slot_3": 6,
+      "shots_slot_2": 8,
+      "shots_slot_4": 7
+    },
+    "e_cutback": {
+      "passes": 203,
+      "forward_passes": 77,
+      "back_passes": 90,
+      "possession_ticks": 3290,
+      "own_third_ticks": 416,
+      "final_third_ticks": 323,
+      "shots": 20,
+      "shots_slot_2": 9,
+      "shots_slot_3": 6,
+      "shots_slot_4": 5
+    },
+    "e_off": {
+      "passes": 203,
+      "forward_passes": 77,
+      "back_passes": 90,
+      "possession_ticks": 3290,
+      "own_third_ticks": 416,
+      "final_third_ticks": 323,
+      "shots": 20,
+      "shots_slot_2": 9,
+      "shots_slot_3": 6,
+      "shots_slot_4": 5
+    },
+    "e_shot": {
+      "passes": 225,
+      "forward_passes": 87,
+      "back_passes": 101,
+      "possession_ticks": 3415,
+      "own_third_ticks": 433,
+      "final_third_ticks": 448,
+      "shots": 14,
+      "shots_slot_4": 6,
+      "shots_slot_3": 4,
+      "shots_slot_2": 4
+    }
+  },
+  "finish_validation": {
+    "e_cutback": {
+      "possession_ticks": 3293,
+      "own_third_ticks": 422,
+      "final_third_ticks": 405,
+      "passes": 209,
+      "forward_passes": 83,
+      "back_passes": 79,
+      "shots": 33,
+      "shots_slot_4": 13,
+      "shots_slot_3": 14,
+      "shots_slot_2": 6
+    },
+    "e_off": {
+      "possession_ticks": 3293,
+      "own_third_ticks": 422,
+      "final_third_ticks": 405,
+      "passes": 209,
+      "forward_passes": 83,
+      "back_passes": 79,
+      "shots": 33,
+      "shots_slot_4": 13,
+      "shots_slot_3": 14,
+      "shots_slot_2": 6
+    },
+    "e_shot": {
+      "possession_ticks": 3611,
+      "own_third_ticks": 469,
+      "final_third_ticks": 696,
+      "passes": 230,
+      "forward_passes": 83,
+      "back_passes": 94,
+      "shots": 22,
+      "shots_slot_2": 7,
+      "shots_slot_4": 9,
+      "shots_slot_3": 6
+    }
+  },
+  "finish_final": {
+    "e_cutback": {
+      "possession_ticks": 17064,
+      "own_third_ticks": 2279,
+      "final_third_ticks": 1898,
+      "passes": 1085,
+      "forward_passes": 437,
+      "back_passes": 425,
+      "shots": 146,
+      "shots_slot_2": 36,
+      "shots_slot_4": 49,
+      "shots_slot_3": 61
+    },
+    "e_off": {
+      "possession_ticks": 17064,
+      "own_third_ticks": 2279,
+      "final_third_ticks": 1898,
+      "passes": 1085,
+      "forward_passes": 437,
+      "back_passes": 425,
+      "shots": 146,
+      "shots_slot_2": 36,
+      "shots_slot_4": 49,
+      "shots_slot_3": 61
+    }
+  }
+}

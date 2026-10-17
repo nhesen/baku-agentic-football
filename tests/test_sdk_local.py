@@ -50,6 +50,8 @@ class LocalSDKSmoke(unittest.IsolatedAsyncioTestCase):
         with patch.dict(os.environ, OFFLINE_ENV, clear=True):
             provider = StrandsInference(load_settings(workshop_settings))
             self.assertEqual(provider.model.config.get("model_id"), "us.openai.gpt-5.6-luna")
+            self.assertEqual(provider.model.config.get("max_tokens"), 32)
+            self.assertNotIn("temperature", provider.model.config)
             self.assertEqual(provider.model.client.meta.region_name, "us-east-1")
             self.assertEqual(provider.model.client.meta.config.retries["total_max_attempts"], 1)
 

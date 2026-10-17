@@ -13,14 +13,20 @@ class StrandsInference:
     def __init__(self, cfg):
         from botocore.config import Config
         from strands.models import BedrockModel
-        self.model = BedrockModel(
+        model_kwargs = dict(
             model_id=cfg.model_id,
             region_name=cfg.region,
             boto_client_config=Config(connect_timeout=cfg.connect_timeout_s,
                                       read_timeout=cfg.read_timeout_s,
                                       retries={"total_max_attempts": 1, "mode": "standard"}),
-            temperature=0.1, max_tokens=32,
+            max_tokens=32,
         )
+        # Bedrock GPT-5.6 Converse rejects the temperature field entirely.
+        # Nova accepts it, so retain the deterministic setting for older/local
+        # profiles while keeping the workshop's GPT-5.6 request valid.
+        if ".openai.gpt-5.6-" not in cfg.model_id:
+            model_kwargs["temperature"] = 0.1
+        self.model = BedrockModel(**model_kwargs)
 
     def __call__(self, system, user):
         from strands import Agent

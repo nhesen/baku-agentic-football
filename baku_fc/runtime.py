@@ -19,7 +19,7 @@ class StrandsInference:
             boto_client_config=Config(connect_timeout=cfg.connect_timeout_s,
                                       read_timeout=cfg.read_timeout_s,
                                       retries={"total_max_attempts": 1, "mode": "standard"}),
-            max_tokens=32,
+            max_tokens=16,
         )
         # Bedrock GPT-5.6 Converse rejects the temperature field entirely.
         # Nova accepts it, so retain the deterministic setting for older/local
@@ -27,8 +27,21 @@ class StrandsInference:
         if ".openai.gpt-5.6-" not in cfg.model_id:
             model_kwargs["temperature"] = 0.1
         self.model = BedrockModel(**model_kwargs)
+        self._direct_converse = ".openai.gpt-5.6-" in cfg.model_id
 
     def __call__(self, system, user):
+        if self._direct_converse:
+            # The football response is a tiny {"choice":N} object. Calling
+            # Converse directly avoids constructing a full Strands Agent and
+            # processing its event stream on every sub-500 ms match tick.
+            response = self.model.client.converse(
+                modelId=self.model.config["model_id"],
+                system=[{"text": system}],
+                messages=[{"role": "user", "content": [{"text": user}]}],
+                inferenceConfig={"maxTokens": 16},
+            )
+            blocks = response.get("output", {}).get("message", {}).get("content", [])
+            return "".join(block.get("text", "") for block in blocks if isinstance(block, dict))
         from strands import Agent
         # Fresh agent per call: a timed-out invocation can never mutate the next
         # agent's messages, and prompt history cannot grow across match ticks.

@@ -50,29 +50,24 @@ class LocalSDKSmoke(unittest.IsolatedAsyncioTestCase):
         with patch.dict(os.environ, OFFLINE_ENV, clear=True):
             provider = StrandsInference(load_settings(workshop_settings))
             self.assertEqual(provider.model.config.get("model_id"), "us.openai.gpt-5.6-luna")
-            self.assertEqual(provider.model.config.get("max_tokens"), 32)
+            self.assertEqual(provider.model.config.get("max_tokens"), 16)
             self.assertNotIn("temperature", provider.model.config)
             self.assertEqual(provider.model.client.meta.region_name, "us-east-1")
             self.assertEqual(provider.model.client.meta.config.retries["total_max_attempts"], 1)
 
-    async def test_real_strands_pipeline_parses_a_stubbed_bedrock_stream(self):
+    async def test_gpt_pipeline_parses_a_stubbed_bedrock_converse_response(self):
         from baku_fc.runtime import StrandsInference
-        from baku_fc.config import Settings
+        from baku_fc.config import load_settings
         from baku_fc.commands import decode
-        events = [
-            {"messageStart": {"role": "assistant"}},
-            {"contentBlockDelta": {"contentBlockIndex": 0, "delta": {"text": '{"choice":0}'}}},
-            {"contentBlockStop": {"contentBlockIndex": 0}},
-            {"messageStop": {"stopReason": "end_turn"}},
-            {"metadata": {"usage": {"inputTokens": 20, "outputTokens": 5, "totalTokens": 25},
-                          "metrics": {"latencyMs": 1}}},
-        ]
+        workshop_settings = Path(__file__).resolve().parents[1] / "workshop" / "ai-team-baku-v6" / "settings.workshop.json"
+        response = {"output": {"message": {"content": [{"text": '{"choice":0}'}]}}}
         with patch.dict(os.environ, OFFLINE_ENV, clear=True):
-            provider = StrandsInference(Settings())
-            with patch.object(provider.model.client, "converse_stream", return_value={"stream": iter(events)}) as method:
+            provider = StrandsInference(load_settings(workshop_settings))
+            with patch.object(provider.model.client, "converse", return_value=response) as method:
                 result = provider('Choose one option. Return only {"choice":0}.', '{"CANDIDATES":[{}]}')
                 self.assertEqual(decode(result), {"choice": 0})
                 self.assertEqual(method.call_count, 1)
+                self.assertEqual(method.call_args.kwargs["inferenceConfig"], {"maxTokens": 16})
 
 
 if __name__ == "__main__":

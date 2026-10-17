@@ -26,8 +26,8 @@ class WorkshopBundleTests(unittest.TestCase):
     def test_claude_haiku_45_is_the_deployed_model(self):
         raw = json.loads((WORKSHOP / "settings.workshop.json").read_text(encoding="utf-8"))
         self.assertEqual(raw["model_id"], "us.anthropic.claude-haiku-4-5-20251001-v1:0")
-        self.assertEqual(raw["model_budget_ms"], 800)
-        self.assertLessEqual(raw["model_budget_ms"], 800)
+        self.assertEqual(raw["model_budget_ms"], 1200)
+        self.assertLess(raw["model_budget_ms"], 2000)
         self.assertEqual(load_settings(WORKSHOP / "settings.workshop.json").model_id,
                          "us.anthropic.claude-haiku-4-5-20251001-v1:0")
 

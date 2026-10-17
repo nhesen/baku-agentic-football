@@ -1,9 +1,9 @@
 {
   "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
   "region": "us-east-1",
-  "model_budget_ms": 800,
+  "model_budget_ms": 1200,
   "connect_timeout_s": 0.2,
-  "read_timeout_s": 0.75,
+  "read_timeout_s": 1.1,
   "pitch_half_length": 55.0,
   "pitch_half_width": 35.0,
   "goal_half_width": 3.66,

@@ -18,16 +18,18 @@ runtime. Nothing in the five thin entrypoints duplicates or replaces the GitHub
 tactics: they select player IDs 0-4 and call `baku_fc.runtime.create_app()`.
 
 The deployment-specific model is the AWS US cross-region inference profile
-`us.anthropic.claude-haiku-4-5-20251001-v1:0`. The runtime calls Bedrock
-Converse directly so a new Strands agent is not constructed on every match
-tick. The model can only select from the legal tactical candidates produced by
+`us.anthropic.claude-haiku-4-5-20251001-v1:0`. The runtime reuses one
+instrumented Strands agent per player so the portal can verify the model and
+count tokens without constructing a new agent on every match tick. The model
+can only select from the legal tactical candidates produced by
 the V6 engine; the validated deterministic V6 fallback remains active when
 inference is slow or unavailable.
 
 Claude is called only when the legal menu contains at least two real choices.
 One-command defensive and shape-maintenance ticks return immediately. The live
-US profile measured 519-683 ms over five direct SDK calls, so the workshop
-runtime uses an 800 ms model budget and a 750 ms transport read timeout.
+US profile measured 519-683 ms over five direct SDK calls. The instrumented
+runtime uses a 1200 ms model budget and an 1100 ms transport read timeout,
+below the portal's two-second response cutoff.
 
 The portal formation label should be set to `1-1-2`. The deployed `original`
 mobile shape is the measured attacking shape closest to 1-1-2; the separate

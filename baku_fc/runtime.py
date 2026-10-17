@@ -27,8 +27,9 @@ class StrandsInference:
         if ".openai.gpt-5.6-" not in cfg.model_id:
             model_kwargs["temperature"] = 0.0
         self.model = BedrockModel(**model_kwargs)
-        self._direct_converse = (".openai.gpt-5.6-" in cfg.model_id or
-                                 ".anthropic.claude-" in cfg.model_id)
+        self._direct_converse = ".openai.gpt-5.6-" in cfg.model_id
+        self._agent = None
+        self._agent_system = None
 
     def __call__(self, system, user):
         if self._direct_converse:
@@ -47,10 +48,17 @@ class StrandsInference:
             blocks = response.get("output", {}).get("message", {}).get("content", [])
             return "".join(block.get("text", "") for block in blocks if isinstance(block, dict))
         from strands import Agent
-        # Fresh agent per call: a timed-out invocation can never mutate the next
-        # agent's messages, and prompt history cannot grow across match ticks.
-        agent = Agent(model=self.model, system_prompt=system, callback_handler=None, tools=[])
-        return str(agent(user))
+        # Keep one instrumented Strands agent so AgentCore observability can
+        # verify the allowed Claude model and count tokens. Clear match history
+        # before each independent tick; the engine permits only one in-flight
+        # request, so a timed-out call cannot race a newer one.
+        if self._agent is None or self._agent_system != system:
+            self._agent = Agent(model=self.model, system_prompt=system,
+                                callback_handler=None, tools=[])
+            self._agent_system = system
+        else:
+            self._agent.messages.clear()
+        return str(self._agent(user))
 
 
 def create_app(default_pid: int):

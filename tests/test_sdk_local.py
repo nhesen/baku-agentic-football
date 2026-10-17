@@ -55,20 +55,27 @@ class LocalSDKSmoke(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(provider.model.client.meta.region_name, "us-east-1")
             self.assertEqual(provider.model.client.meta.config.retries["total_max_attempts"], 1)
 
-    async def test_claude_pipeline_parses_a_stubbed_bedrock_converse_response(self):
+    async def test_claude_pipeline_reuses_instrumented_strands_agent(self):
         from baku_fc.runtime import StrandsInference
         from baku_fc.config import load_settings
         from baku_fc.commands import decode
         workshop_settings = Path(__file__).resolve().parents[1] / "workshop" / "ai-team-baku-v6" / "settings.workshop.json"
-        response = {"output": {"message": {"content": [{"text": '{"choice":0}'}]}}}
+        created = []
+        class FakeAgent:
+            def __init__(self, **kwargs):
+                self.messages = []
+                created.append(self)
+            def __call__(self, user):
+                self.messages.append(user)
+                return '{"choice":0}'
         with patch.dict(os.environ, OFFLINE_ENV, clear=True):
             provider = StrandsInference(load_settings(workshop_settings))
-            with patch.object(provider.model.client, "converse", return_value=response) as method:
+            with patch("strands.Agent", FakeAgent):
                 result = provider('Choose one option. Return only {"choice":0}.', '{"CANDIDATES":[{}]}')
                 self.assertEqual(decode(result), {"choice": 0})
-                self.assertEqual(method.call_count, 1)
-                self.assertEqual(method.call_args.kwargs["inferenceConfig"],
-                                 {"maxTokens": 16, "temperature": 0.0})
+                provider('Choose one option. Return only {"choice":0}.', '{"CANDIDATES":[{}]}')
+                self.assertEqual(len(created), 1)
+                self.assertEqual(len(created[0].messages), 1)
 
 
 if __name__ == "__main__":

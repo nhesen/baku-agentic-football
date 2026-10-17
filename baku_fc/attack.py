@@ -134,10 +134,21 @@ def plan_five(w,cfg):
     if not me or not me.active:
         candidates=[command(w,'SET_STANCE',{'stance':0})]
     elif w.status=='ME':
-        kicks=[command(w,'PASS',{'target_player_id':p['pid'],'type':cfg.pass_type}) for p in passes[:3]]
         if w.pid==0:
+            # Use the goalkeeper-specific workshop command in open play. A
+            # short option is thrown quickly; longer distribution is kicked.
+            # The generic PASS command remains reserved for explicit restarts
+            # below, where the engine requires the restart taker to kick.
+            if cfg.advanced_commands:
+                kicks=[command(w,'GK_DISTRIBUTE',{
+                    'target_player_id':p['pid'],
+                    'method':'THROW' if p['distance']<=25 else 'KICK',
+                }) for p in passes[:3]]
+            else:
+                kicks=[command(w,'PASS',{'target_player_id':p['pid'],'type':cfg.pass_type}) for p in passes[:3]]
             candidates=kicks+[move(w,target)]
         else:
+            kicks=[command(w,'PASS',{'target_player_id':p['pid'],'type':cfg.pass_type}) for p in passes[:3]]
             h=cfg.pitch_half_length
             maxu=-3 if w.pid==anchor_id(w,cfg) and not cfg.release_anchor else h-2
             # Carry toward a central finishing point; avoid touchline dead ends.

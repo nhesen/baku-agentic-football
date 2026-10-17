@@ -66,4 +66,14 @@ class FivePlayers(unittest.TestCase):
         p['gameState'].update(playMode='FREE_KICK',restartTeamId=0,restartPlayerId=2)
         self.assertEqual(e.decide(p)['commands'][0]['commandType'],'SET_STANCE')
 
+    def test_goalkeeper_uses_native_distribution_in_open_play(self):
+        p=self.held(0)
+        _player(p,0,0)['position']={'x':-50,'y':0}
+        p['gameState']['ball']['position']={'x':-50,'y':0}
+        cfg=Settings(use_llm=False,scheme='flow',advanced_commands=True)
+        w=normalize(p,0,cfg);q=plan(w,cfg)
+        self.assertEqual(q.fallback['commandType'],'GK_DISTRIBUTE')
+        self.assertIn(q.fallback['parameters']['method'],('THROW','KICK'))
+        self.assertIsNotNone(validate(q.fallback,w,q,cfg))
+
 if __name__=='__main__':unittest.main(verbosity=2)

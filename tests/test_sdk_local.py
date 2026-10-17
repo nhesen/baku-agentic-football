@@ -7,6 +7,7 @@ import importlib.util
 import json
 import os
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from test_adversarial import fixture
@@ -44,9 +45,11 @@ class LocalSDKSmoke(unittest.IsolatedAsyncioTestCase):
 
     async def test_real_bedrock_model_constructor_accepts_settings_without_request(self):
         from baku_fc.runtime import StrandsInference
-        from baku_fc.config import Settings
+        from baku_fc.config import load_settings
+        workshop_settings = Path(__file__).resolve().parents[1] / "workshop" / "ai-team-baku-v6" / "settings.workshop.json"
         with patch.dict(os.environ, OFFLINE_ENV, clear=True):
-            provider = StrandsInference(Settings())
+            provider = StrandsInference(load_settings(workshop_settings))
+            self.assertEqual(provider.model.config.get("model_id"), "us.openai.gpt-5.6-luna")
             self.assertEqual(provider.model.client.meta.region_name, "us-east-1")
             self.assertEqual(provider.model.client.meta.config.retries["total_max_attempts"], 1)
 

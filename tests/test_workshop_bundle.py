@@ -26,6 +26,8 @@ class WorkshopBundleTests(unittest.TestCase):
     def test_gpt_56_luna_is_the_deployed_model(self):
         raw = json.loads((WORKSHOP / "settings.workshop.json").read_text(encoding="utf-8"))
         self.assertEqual(raw["model_id"], "us.openai.gpt-5.6-luna")
+        self.assertEqual(raw["model_budget_ms"], 375)
+        self.assertLess(raw["model_budget_ms"], 500)
         self.assertEqual(load_settings(WORKSHOP / "settings.workshop.json").model_id,
                          "us.openai.gpt-5.6-luna")
 

@@ -99,7 +99,6 @@ class World:
     center_aim_supported: bool = False
     last_passer: int | None = None
     pass_age: float | None = None
-    opponent_release_age: float | None = None
 
     @property
     def me(self):

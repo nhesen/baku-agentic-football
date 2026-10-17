@@ -180,13 +180,7 @@ def shot_facts(w: World, cfg: Settings):
     if cfg.prefer_center and w.center_aim_supported:
         aim = "CENTER"
         lane = segment_clearance(w.me.pos, Point(target_x,0), w.opponents, exclude_gk=True)
-    required_lane = None
-    if cfg.finishing_tactics in {"shot", "balanced"}:
-        # Geometric hypotheses, not calibrated xG. Keep clear long shots rather
-        # than shortening the range that was useful in the V3/V5 experiments.
-        required_lane = 1.0 if distance <= 13 else 1.8 if distance <= 22 else 2.5
-        allowed = allowed and lane >= required_lane
-    return allowed, {"required_clearance":required_lane,"distance": round(distance, 1), "field_player_clearance": round(lane, 1),
+    return allowed, {"distance": round(distance, 1), "field_player_clearance": round(lane, 1),
                      "aim": aim, "geometry_assumption_goal_half_width": cfg.goal_half_width}, aim
 
 

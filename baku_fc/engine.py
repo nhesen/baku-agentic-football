@@ -79,15 +79,6 @@ class Engine:
                     and self._last_control[0] == w.team and 0 <= w.time-self._last_control[1] <= 2.0
                     and abs(w.velocity.x)+abs(w.velocity.y)>1 and w.restart_team is None):
                 w=replace(w,our_pass_in_flight=True)
-            if (self.cfg.finishing_tactics in {"cover", "balanced"}
-                    and w.status in {"LOOSE", "UNKNOWN"} and self._last_control is not None
-                    and self._last_control[0] != w.team
-                    and w.time > 0 and 0 <= w.time-self._last_control[1] <= 1.5
-                    and abs(w.velocity.x)+abs(w.velocity.y)>1
-                    and w.restart_team is None and not stopped_phase(w)):
-                # Retain visible threat cover, without inventing possession or
-                # permitting a kick while the current owner is unconfirmed.
-                w=replace(w,opponent_release_age=w.time-self._last_control[1])
             self._last_seen=(identity,w.time)
         if self.cfg.phase_tactics != "off":
             # Observed possession only; no opponent policy or hidden state.

@@ -1,5 +1,5 @@
-# Baku FC V7
+# Baku FC: V6 məşqçi prinsiplərinin sınağı
 
-Yeni variant qəbul şərtini keçmədi. V7-nin əsas profili V6 matç davranışını saxlayır; düzəlişlər ayrıca profillərdə işləyir.
+Yeni variant qəbul şərtini keçdi və əsas profilə seçildi.
 
-Düzəlişlər: PATCHES_AZ.md. Nəticələr: reports/finishing-v7/NETICELER_AZ.md. Əsas yerli profil profiles/agentpitch-validated.json. AWS namizədi canlı yoxlanmayıb. tools/build_agents.py beş runtime mənbəyini yerli qurur, deploy etmir.
+Nəticələr: ../baku-v6-study/NETICELER_AZ.md. Mənbələr: RESEARCH_AZ.md. Əsas yerli profil profiles/agentpitch-validated.json; AWS namizədi ayrıca ölçü fərziyyəsinə malikdir və canlı yoxlanmayıb. Beş runtime tools/build_agents.py ilə yerli qurulur.

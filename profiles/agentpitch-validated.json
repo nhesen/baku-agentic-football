@@ -27,6 +27,5 @@
   "prefer_center": false,
   "formation": "original",
   "phase_tactics": "attack",
-  "combination_tactics": "give_go",
-  "finishing_tactics": "off"
+  "combination_tactics": "give_go"
 }

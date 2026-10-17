@@ -1,38 +1,43 @@
-# Baku FC V7 — 5v5 zərbə və ötürmə düzəlişləri
+# Baku FC — sabit V6 (5v5)
 
-Bir qapıçı və dörd meydan oyunçusu. V7 bloklu zərbə seçimini, cinahdan mərkəzə geriyə ötürmə prioritetini və rəqib buraxılışından sonra örtüyü ayrı modullar kimi əlavə edir.
+Əsas runtime və profillər orijinal V6 kommitindən bərpa edilib. 74 test yenidən keçib; beş runtime qurulub və Python mənbə baytları əvvəlki V6 ilə tutuşdurulub.
 
-Yeni variant qəbul şərtini keçmədi; əsas profil V6 matç davranışını saxlayır. Yeni düzəlişlər ayrıca profillərdədir.
+[Orijinal V6 ZIP və release](https://github.com/nhesen/baku-agentic-football/releases/tag/v6.0.0). Native fingerprint `72487b5cac201020`, AWS namizədi `c42fb85e84e47400`.
 
-## Davranışlar
+V7 yerli müqayisədə üstünlük göstərmədiyi üçün əsas seçim deyil. V7 kodu `finishing-v7` branch və `v7.0.0` tag-da, [sənədi burada](docs/V7_README.md), nəticələri `reports/finishing-v7` qovluğunda saxlanır. Yeni fərziyyələr ayrıca araşdırılır; sabit V6-ya gizli dəyişiklik edilməyib. Canlı AWS-də yoxlanmayıb.
 
-- Zərbə dəhlizi filtri həm qərar menyusunda, həm müstəqil validatorda tətbiq edilir; açıq uzaq zərbələr saxlanılır.
-- Yalnız açıq, qapıya daha yaxın mərkəzi qəbul nöqtəsinə cutback pası top sürmədən önə çəkilə bilər.
-- Rəqib topu buraxdıqdan sonra ən çox 1.5 saniyəlik örtük yaddaşı; oyun vaxtı yoxdursa yeni timed örtük qurulmur.
-- Pas ehtimalı modelinin `flow` sxeminə qoşulması düzəlib; matç üstünlüyü yoxlanmadığı üçün əsas profildə söndürülüb.
-- Give-go yaddaşı, örtüklü press yaxınlaşması, öz pasının qəbul nöqtəsi, ofsayd, restart və cooldown qoruyucuları saxlanılıb.
 
-[Dəqiq qaydalar və profil izahları](PATCHES_AZ.md). [Göndərilmiş patch-in baxışı](docs/V7_PATCH_REVIEW_AZ.md).
+Bir qapıçı və dörd meydan oyunçusu. İngiliscə real futbol mənbələrindən götürülən prinsiplər native matçlarda ayrıca və birlikdə sınaqdan keçirilib.
 
-## Nəticələr
+Yeni variant əvvəlcədən yazılmış qəbul şərtini keçdiyi üçün əsas profilə seçilib.
 
-148 tam nəzarətli native matç: 4 uyğunluq təkrarı, 40 ilkin seçim, 24 doğrulama və 80 əvvəl görünməmiş yekun oyun. Hər iki tərəfdə callback xətası və engine fallback sayı sıfırdır. Saat qorumasından əvvəlki 36 tamamlanmış pilot oyunu ayrıca saxlanılıb, əsas statistikaya qatılmayıb.
+## Nə sınanıb
+
+- Ayrı ötürmə bucaqları və açıq xətlər üçün üçbucaq dəstəyi.
+- Görünən top sahibliyi ötürüləndən sonra pas verənin diaqonal qaçışı.
+- Rəqibi gecikdirən bir müdafiəçi, qapı tərəfi örtüyü və hücuma çıxış.
+- Aktiv oyunçu çıxarılanda sığorta rolunun başqa aktiv oyunçuya keçməsi.
+
+[15 ingiliscə mənbə: oxunan hissələr, nəticələr və kod xəritəsi](RESEARCH_AZ.md). Qapıçıdan başqa dörd meydan oyunçusu var; futzalın ayrıca qaydaları mühərrikə əlavə edilməyib.
+
+## Ölçülmüş nəticələr
+
+180 tam yerli matç: 4 nəzarət təkrarı, 60 ilkin seçim, 36 doğrulama və 80 toxunulmamış yekun oyun. Rəqiblər native baseline və dondurulmuş V5 agentimizdir.
 
 | Variant / rəqib | Oyun | Q | H | M | Qollar |
 |---|---:|---:|---:|---:|---:|
-| e_off / baseline | 20 | 1 | 17 | 2 | 2:3 |
-| e_cutback / baseline | 20 | 1 | 17 | 2 | 2:3 |
-| e_off / reference6 | 20 | 3 | 14 | 3 | 3:3 |
-| e_cutback / reference6 | 20 | 3 | 14 | 3 | 3:3 |
+| c_off / baseline | 20 | 2 | 13 | 5 | 2:5 |
+| c_give_go / baseline | 20 | 3 | 14 | 3 | 4:4 |
+| c_off / reference5 | 20 | 4 | 12 | 4 | 4:4 |
+| c_give_go / reference5 | 20 | 4 | 13 | 3 | 4:3 |
 
-Seçilmiş yeni namizəd `e_cutback`. Ümumi qələbə fərqi 0 faiz bəndi, cüt toxum bootstrap 95% intervalı [0.0, 0.0]. Canlı AWS turnirinin qələbə ehtimalı deyil.
+Yekun seçilmiş namizəd `c_give_go`. Qələbə fərqi 2.5 faiz bəndi; toxumları cüt saxlayan bootstrap 95% intervalı [-10.0, 15.0]. Bu nəticə canlı AWS turnirini qazanmaq ehtimalı deyil.
 
-- [Tam nəticələr](reports/finishing-v7/NETICELER_AZ.md)
-- [148 matçın cədvəli](reports/finishing-v7/ALL_MATCHES.csv)
-- [Faktiki hücum göstəriciləri](reports/finishing-v7/DIAGNOSTICS.json)
-- [Qol epizodları](reports/finishing-v7/GOAL_AUDIT.json)
-- [Yekun matçın təkrarı](reports/finishing-v7/replay-first.html)
-- [Əvvəlki V6 nəticələri](reports/coaching-v6/NETICELER_AZ.md)
+- [Tam nəticələr və dərs](reports/coaching-v6/NETICELER_AZ.md)
+- [180 matçın cədvəli](reports/coaching-v6/ALL_MATCHES.csv)
+- [Faktiki hücum göstəriciləri](reports/coaching-v6/DIAGNOSTICS.json)
+- [Yekun matçın təkrarı](reports/coaching-v6/replay-first.html)
+- [Əvvəlki V5 nəticələri](reports/phase-v5/NETICELER_AZ.md)
 
 ## İşlətmək
 
@@ -44,14 +49,12 @@ python -m unittest discover -s tests
 python tools/build_agents.py
 ```
 
-**85 test keçib, ötürülən yoxdur.** Beş runtime yerli qurulub, mənbə və settings baytları yoxlanıb. Build AWS deploy etmir.
+74 test keçib, ötürülən yoxdur. Beş runtime yerli qurulub və mənbə baytları yoxlanıb. Build AWS deploy etmir.
 
-Əsas yerli profil: `profiles/agentpitch-validated.json`. Parametrlər: `phase_tactics=attack`, `combination_tactics=give_go`, `finishing_tactics=off`. Native fingerprint: `7d83678780179e5c`.
+Əsas yerli profil: `profiles/agentpitch-validated.json`; parametrlər `phase_tactics=attack`, `combination_tactics=give_go`; fingerprint `72487b5cac201020`. `profiles/coaching-*.json` ayrıca sınaq rejimləridir. AWS namizədi `profiles/aws-candidate.json` və əsas `settings.json` faylıdır: 110×70 meydan fərziyyəsi var, canlı yoxlanmayıb.
 
-`profiles/finish-*.json` rejimləri: `off`, `shot`, `cutback`, `cover`, `balanced`. `profiles/optional-retention.json` modelin texniki qoşulmasını açır; bu V7 matç seriyasında onun qələbə üstünlüyü ölçülməyib. Modelin AUC-si qol və ya qələbə ehtimalı deyil.
+Fizika, roster və atributlar dəyişdirilməyib; hər matç 1200 native tick-dir. Mənbə bütün seçim mərhələləri boyunca dondurulub. AWS çempionlarının açıq agentləri, canlı portal və LLM matçları bu müqayisəyə daxil deyil.
 
-AWS namizədi: `profiles/aws-candidate.json` və `baku_fc/settings.json`; 110×70 meydan fərziyyəsi və canlı model seçimi var, canlı AWS-də yoxlanmayıb. Native müqayisə 100×60 meydanda, eyni fizika/atributlarla, hər oyunda 1200 tick, iki tərəfdən aparılıb. Rəqiblər native baseline və dondurulmuş V6 agentimizdir. AWS çempionlarının agentləri istifadə edilməyib.
+## Mənşə və lisenziya
 
-## Mənşə
-
-Öz kodu və AWS şablonu MIT-0, təkrarlardakı upstream AgentPitch viewer Apache-2.0-dır. [Mənbələr](SOURCES.json), [bildirişlər](third_party/README.md), [sınaq mənşəyi](reports/finishing-v7/PROVENANCE.json). Xam matç ZIP-i yerli outputs/baku-v7-study qovluğundadır.
+Öz kodu və AWS şablonu MIT-0; təkrarlardakı upstream AgentPitch viewer Apache-2.0-dır. [Mənbələr](SOURCES.json), [bildirişlər](third_party/README.md), [sınaq mənşəyi](reports/coaching-v6/PROVENANCE.json). Xam matç ZIP-i yerli outputs/baku-v6-study qovluğundadır.

@@ -24,6 +24,11 @@ tick. The model can only select from the legal tactical candidates produced by
 the V6 engine; the validated deterministic V6 fallback remains active when
 inference is slow or unavailable.
 
+Claude is called only when the legal menu contains at least two real choices.
+One-command defensive and shape-maintenance ticks return immediately. The live
+US profile measured 519-683 ms over five direct SDK calls, so the workshop
+runtime uses an 800 ms model budget and a 750 ms transport read timeout.
+
 The portal formation label should be set to `1-1-2`. The deployed `original`
 mobile shape is the measured attacking shape closest to 1-1-2; the separate
 2-1-1 experiment produced fewer shots and no wins against the native baseline

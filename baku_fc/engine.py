@@ -124,6 +124,11 @@ class Engine:
         source = "offline_fallback"
         if w.me is None or not w.me.active:
             source = "no_active_player"
+        elif len(p.candidates) == 1:
+            # A model cannot improve a one-item legal menu. Returning the
+            # validated command immediately avoids needless latency off-ball
+            # while reserving Claude for real tactical choices.
+            source = "deterministic_singleton"
         elif self.cfg.use_llm and self.infer is not None:
             user = json.dumps({"FACTS": p.facts, "CANDIDATES": list(p.candidates)}, separators=(",", ":"), allow_nan=False)
             response, source = self._inference(SYSTEM + "\nYour role is " + p.facts.get("role", ROLES[w.pid]) + ".", user)

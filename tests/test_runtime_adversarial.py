@@ -18,21 +18,35 @@ class InferenceAdversaries(unittest.TestCase):
         self.addCleanup(engine.close)
         return engine
 
+    def choice_fixture(self):
+        payload = fixture(pid=3)
+        payload["gameState"]["ball"].update(
+            isFree=False, possessionPlayerId=3, possessionTeamId=0,
+            position={"x": 5, "y": 6})
+        return payload
+
     def test_valid_choice_selects_current_menu(self):
         requests = []
         def infer(system, user):
             requests.append(json.loads(user))
             return '{"choice":0}'
         engine = self.engine(infer)
-        result = engine.decide(fixture(pid=3))
+        result = engine.decide(self.choice_fixture())
         self.assertEqual(result["meta"]["source"], "model")
         self.assertEqual(result["commands"], [requests[0]["CANDIDATES"][0]])
         self.assertEqual(requests[0]["FACTS"]["player"], 3)
 
+    def test_single_legal_candidate_skips_model(self):
+        calls = []
+        result = self.engine(lambda system, user: calls.append(user) or '{"choice":0}').decide(fixture(pid=0))
+        self.assertEqual(result["meta"]["source"], "deterministic_singleton")
+        self.assertEqual(calls, [])
+        self.assertEqual(len(result["commands"]), 1)
+
     def test_model_exception_falls_back_without_losing_command(self):
         def infer(system, user):
             raise RuntimeError("injected unavailable model")
-        result = self.engine(infer).decide(fixture(pid=3))
+        result = self.engine(infer).decide(self.choice_fixture())
         self.assertEqual(result["meta"]["source"], "model_error:RuntimeError")
         self.assertEqual(len(result["commands"]), 1)
         self.assertEqual(result["commands"][0]["playerId"], 3)
@@ -41,14 +55,14 @@ class InferenceAdversaries(unittest.TestCase):
         for response in ('{"choice":true}', '{"choice":-1}', '{"choice":999}',
                          '{"choice":0.0}', '[]', 'not json'):
             with self.subTest(response=response):
-                result = self.engine(lambda s, u, r=response: r).decide(fixture(pid=3))
+                result = self.engine(lambda s, u, r=response: r).decide(self.choice_fixture())
                 self.assertEqual(result["meta"]["source"], "invalid_model_output")
                 self.assertEqual(len(result["commands"]), 1)
 
     def test_model_cannot_invent_a_valid_but_unlisted_move(self):
         raw = json.dumps({"commandType": "MOVE_TO", "playerId": 3, "teamId": 0,
                           "parameters": {"target_x": 54, "target_y": 34, "sprint": True}})
-        result = self.engine(lambda s, u: raw).decide(fixture(pid=3))
+        result = self.engine(lambda s, u: raw).decide(self.choice_fixture())
         self.assertEqual(result["meta"]["source"], "invalid_model_output")
         self.assertNotEqual(result["commands"][0]["parameters"].get("target_y"), 34)
 
@@ -66,7 +80,7 @@ class InferenceAdversaries(unittest.TestCase):
             return '{"choice":0}'
         engine = self.engine(infer, budget=10)
         try:
-            first = fixture(pid=3)
+            first = self.choice_fixture()
             first["gameState"]["tick"] = 10
             started = time.perf_counter()
             result1 = engine.decide(first)
@@ -74,7 +88,9 @@ class InferenceAdversaries(unittest.TestCase):
             self.assertLess(time.perf_counter() - started, 0.5)
             second = copy.deepcopy(first)
             second["gameState"]["tick"] = 11
-            second["gameState"]["ball"]["position"] = {"x": -40, "y": -15}
+            second["gameState"]["ball"]["position"] = {"x": 45, "y": 0}
+            next(p for p in second["gameState"]["players"]
+                 if p["teamCode"] == "home" and p["agentId"] == "agentId_3")["position"] = {"x": 45, "y": 0}
             result2 = engine.decide(second)
             self.assertEqual(result2["meta"]["source"], "busy")
             self.assertEqual(result2["meta"]["tick"], 11)

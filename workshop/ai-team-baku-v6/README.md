@@ -14,8 +14,14 @@ chmod +x deploy-all.sh
 ```
 
 The deploy script copies the canonical `baku_fc/` package into each temporary
-runtime. The only deployment-specific override is the AWS cross-region inference
-profile `us.amazon.nova-micro-v1:0`, which is the model ID used by the workshop.
+runtime. Nothing in the five thin entrypoints duplicates or replaces the GitHub
+tactics: they select player IDs 0-4 and call `baku_fc.runtime.create_app()`.
+
+The deployment-specific model is the AWS US cross-region inference profile
+`us.openai.gpt-5.6-luna`. Luna is the low-latency GPT-5.6 variant and supports
+the Bedrock Converse API used by Strands. The model can only select from the
+legal tactical candidates produced by the V6 engine; the validated deterministic
+V6 fallback remains active when inference is slow or unavailable.
 
 Register the resulting runtime ARNs in this order:
 
